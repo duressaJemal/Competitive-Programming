@@ -1,0 +1,22 @@
+def gradingStudents(grades):
+    # Write your code here
+    output = []
+    for i in range(len(grades)):
+        if grades[i] < 38 or grades[i] == 100:
+            output.append(grades[i])
+        else:
+            
+            if (grades[i] % 10) <= 5:
+                if (grades[i] - (grades[i] % 10) + 5) - grades[i] < 3:
+                    output.append((grades[i] - (grades[i] % 10)) + 5)
+                    
+                else:
+                    output.append(grades[i])
+            else:
+                
+                if (grades[i] - (grades[i] % 10) + 10) - grades[i] < 3:
+                    print(grades[i])
+                    output.append((grades[i] - (grades[i] % 10)) + 10)
+                else:
+                    output.append(grades[i])
+    return output
