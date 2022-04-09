@@ -1,0 +1,24 @@
+def insertionSort1(n, arr):
+    # Write your code here
+    a = arr[n-1]
+    b= arr[0]
+    for i in range(n-1):
+        if arr[n-2-i] > a:
+            arr[n-1-i] = arr[n-2-i]
+
+            for i in range(n):
+                print(arr[i], end = " ")
+            print()
+        else:
+            arr[n-1-i] = a
+            for i in range(n):
+                print(arr[i], end = " ")
+            print()
+            break
+            
+    if arr[0] > a:
+        arr[0] = a
+        for i in range(n):
+            print(arr[i], end = " ")
+        print()
+                
