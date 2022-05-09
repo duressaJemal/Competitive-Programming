@@ -8,23 +8,16 @@ class Solution:
         
         dummy = ListNode()
         dummy.next = head
-        prev = dummy
-
-        current = head
         
+        prev, current = dummy, head
         while current:
-            
-            while current.next and current.val == val:
-
-                current = current.next
-                continue
-            
-            if current.val == val and current.next == None:
-                prev.next = None
-                return dummy.next
-            
-            prev.next = current
-            prev = prev.next
+            if current.val == val:
+                prev.next = current.next
+            else:
+                prev = current
             current = current.next
         
         return dummy.next
+
+
+        
