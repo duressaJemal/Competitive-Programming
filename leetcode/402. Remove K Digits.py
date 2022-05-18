@@ -1,3 +1,4 @@
+# link https://leetcode.com/problems/remove-k-digits/
 class Solution:
     def removeKdigits(self, num: str, k: int) -> str:
         
@@ -12,6 +13,5 @@ class Solution:
         
         # slices the list if k > 0
         stack = stack[:len(stack)-k]
-        if len(stack) == 0:
-            return "0"
-        return str(int("".join(stack)))
+        
+        return "".join(stack).lstrip("0") or "0"
