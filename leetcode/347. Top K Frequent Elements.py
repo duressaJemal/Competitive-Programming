@@ -1,3 +1,27 @@
+# https://leetcode.com/problems/top-k-frequent-elements/submissions/
+
+import heapq
+
+# heap
+
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        
+        output, heap = [], []
+        counter = collections.Counter(nums)
+        
+        heap = [(-value, key) for key, value in counter.items()]
+        heapq.heapify(heap)
+        
+        while k:
+            
+            output.append(heapq.heappop(heap)[1])
+            k -= 1
+        
+        return output
+            
+# sorting
+
 class Solution:
     def topKFrequent(self, nums, k):
 
@@ -15,3 +39,7 @@ class Solution:
             output.append(freqent[i][0])
 
         return output
+            
+        
+        
+        
