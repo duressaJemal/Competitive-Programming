@@ -1,5 +1,8 @@
 # link: https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/
 
+# time: O(n * 2)
+# space: O(n * 2)
+
 # heap
 import heapq
 
