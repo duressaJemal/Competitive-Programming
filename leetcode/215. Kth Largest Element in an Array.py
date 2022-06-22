@@ -1,4 +1,4 @@
-#https://leetcode.com/problems/kth-largest-element-in-an-array/submissions/
+# link: https://leetcode.com/problems/kth-largest-element-in-an-array/submissions/
 
 # sorting
 class Solution:
@@ -11,9 +11,8 @@ import heapq
 class Solution:
     def findKthLargest(self, nums: List[int], k: int) -> int:
         
-        heap = []
-        for num in nums:
-            heapq.heappush(heap, -num)
+        heap = [-num for num in nums]
+        heapq.heapify(heap)
         
         while k:
             if k == 1:
@@ -21,5 +20,6 @@ class Solution:
             
             heapq.heappop(heap)
             k -=1
+        
         
         
