@@ -1,4 +1,4 @@
-# https://leetcode.com/problems/last-stone-weight/submissions/
+# link: https://leetcode.com/problems/last-stone-weight/submissions/
 
 import heapq
 
@@ -6,10 +6,9 @@ class Solution:
     def lastStoneWeight(self, stones: List[int]) -> int:
         
         if len(stones) == 1: return stones[0]
-        heap = []
         
-        for stone in stones:
-            heapq.heappush(heap, -stone)
+        heap = [-stone for stone in stones]
+        heapq.heapify(heap)
         
         while len(heap) > 1:
             
@@ -21,5 +20,7 @@ class Solution:
             
         if len(heap) == 0: return 0
         return -heap[0]
+        
+        
         
         
