@@ -1,4 +1,4 @@
-# https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/
+# link: https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/
 
 # heap
 import heapq
