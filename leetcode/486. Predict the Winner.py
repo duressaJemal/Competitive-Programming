@@ -3,7 +3,7 @@
 # TopDown
 
 # time: O(n ** 2)
-# space: O(n ** 2)
+# space: O(n)
 
 class Solution:
     def PredictTheWinner(self, nums: List[int]) -> bool:
