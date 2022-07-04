@@ -1,5 +1,10 @@
 # link: https://leetcode.com/problems/minimum-consecutive-cards-to-pick-up/
 
+# approach: Sliding Window
+# time: O(n)
+# space: O(n)
+
+
 class Solution:
     def minimumCardPickup(self, cards: List[int]) -> int:
         
@@ -27,5 +32,3 @@ class Solution:
             
                 
                 
-                
-             
