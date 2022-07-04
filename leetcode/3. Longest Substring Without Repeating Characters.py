@@ -2,22 +2,25 @@ class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
         
         unique = set() # for storing unique value in traversal
-        s.replace(" ", "") # remove all white spaces
+        start, end, longest = 0, 0, 0
+        n = len(s)
         
-        start = 0
-        end = 0
-        longest = 0
+        if not n:
+            return 0
         
-        while end < len(s) and start < len(s):
-            
-            if s[end] in unique: # shrinking condition
-                unique.remove(s[start])
-                start += 1
-                
-            else: # expand
-                
-                unique.add(s[end]) # add unique value to set
-                longest = max(longest, end - start + 1)
+        unique.add(s[start])
+        for start in range(n):
+            while end + 1 < n and s[end + 1] not in  unique:
                 end += 1
-                
+                unique.add(s[end])
+            
+            longest = max(longest, end - start + 1)
+            unique.remove(s[start])
+            
         return longest
+        
+        
+        
+        
+        
+        
