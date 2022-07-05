@@ -1,19 +1,22 @@
+# link: https://leetcode.com/problems/container-with-most-water/
+
+# time: O(n)
+# space: O(1)
+
 class Solution:
     def maxArea(self, height: List[int]) -> int:
         
-        left_pointer = 0
-        right_pointer = len(height) - 1
-        area = 0
+        start, end, longest = 0, len(height) - 1, 0
+        n = len(height)
         
-        while right_pointer > left_pointer:
-
-            area = max(area, (right_pointer - left_pointer) * min(height[right_pointer] , height[left_pointer]))
-            
-            if height[right_pointer] >= height[left_pointer]:
-                left_pointer += 1
-                
+        while start < end:
+            area = (end - start) * min(height[start], height[end])
+            longest = max(longest, area)
+            if height[start] > height[end]:
+                end -= 1
             else:
-                right_pointer -= 1
+                start += 1
+                
+        return longest
+                
             
-        return area
-        
