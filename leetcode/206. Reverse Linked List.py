@@ -1,21 +1,40 @@
-# Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, val=0, next=None):
-#         self.val = val
-#         self.next = next
+# link: https://leetcode.com/problems/reverse-linked-list/submissions/
+
+# Iterative
+
+# time: O(n)
+# space: O(1)
+
 class Solution:
     def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
         
-        current = head
+        if not head:
+            return head
         prev = None
-        
+        current = head
         while current:
-            next_node = current.next
+            temporary = current.next
             current.next = prev
             prev = current
-            current = next_node
-            head = prev
-            
-        return head
+            current = temporary
+        return prev
     
-    # CHECK OUT THE RECURSIVE APPROACH
+# Recursive
+
+# time: O(n)
+# space: (n)
+
+class Solution:
+    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        
+        def helper(current, prev=None):
+            if not current:
+                return prev
+            tempo = current.next
+            current.next = prev
+            return helper(tempo, current)
+        
+        return helper(head)
+            
+
+            
