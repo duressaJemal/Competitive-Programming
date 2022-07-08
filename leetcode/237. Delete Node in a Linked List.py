@@ -1,8 +1,4 @@
-# Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.next = None
+# link: https://leetcode.com/problems/delete-node-in-a-linked-list/
 
 class Solution:
     def deleteNode(self, node):
@@ -10,22 +6,9 @@ class Solution:
         :type node: ListNode
         :rtype: void Do not return anything, modify node in-place instead.
         """
-          
-        current = node
-        
-        while current.next != None:
-            
-            if current.next.next == None:
-                current.val = current.next.val
-                current.next = None
+        while node.next:
+            node.val, node.next.val = node.next.val, node.val
+            if not node.next.next:
+                node.next = node.next.next
                 break
-                
-            current.val = current.next.val
-            current = current.next
-            
-            
-        # OPTIMIZED
-        
-        # node.val = node.next.val
-        # node.next = node.next.next
-        
+            node = node.next
