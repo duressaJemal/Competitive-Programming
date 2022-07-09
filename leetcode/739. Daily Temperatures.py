@@ -1,16 +1,21 @@
-from collections import deque
+# link: https://leetcode.com/problems/daily-temperatures/submissions/
+
+# time: O(n)
+# space: O(n)
+
 class Solution:
-    def dailyTemperatures(self, temperatures):
+    def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
         
-        output = [0] * len(temperatures)
-        stack = deque([])
-
+        n = len(temperatures)
+        output = [0] * n
+        stack = []
+        
         for index, value in enumerate(temperatures):
-
-            while stack and value > stack[-1][1]:
-                output[stack[-1][0]] = index - stack[-1][0]
-                stack.pop()
-
-            stack.append((index, value))
-
+            while stack and temperatures[index] > stack[-1][1]:
+                popped_item = stack.pop()
+                output[popped_item[0]] = index - popped_item[0]
+            stack.append((index, temperatures[index]))
+            
         return output
+        
+        
