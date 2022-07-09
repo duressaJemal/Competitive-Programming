@@ -1,35 +1,32 @@
+# link: https://leetcode.com/problems/max-consecutive-ones-iii/submissions/
+
+# time: O(n)
+# space: O(1)
+
 class Solution:
     def longestOnes(self, nums: List[int], k: int) -> int:
         
-        d = {0:0}
-        start = 0
-        end = 0
-        longest = 0
+        n = len(nums)
+        start, end, longest, zeros = 0, 0, 0, 0
         
-        while end < len(nums) and start < len(nums):
+        while end < n:
             
-            if d[0] <= k:
-                
-                if nums[end] == 0:
-                    d[0] += 1
-                    
-                if d[0] <= k:
-                    longest = max(longest, end-start + 1)
-                    end += 1
-                    
-            else:
+            if nums[end] == 0:
+                zeros += 1
+            
+            # this makes the window valid again
+            while zeros > k:
                 if nums[start] == 0:
-                    d[0] -= 1
-
-                if start == end:
-                    start += 1
-                    end += 1
-                    continue
-                    
-                if d[0] <= k:
-                    end += 1
-                    start += 1
-                    continue
+                    zeros -= 1
                 start += 1
-                
+            
+            longest = max(longest, end - start + 1)
+            end += 1
+        
         return longest
+            
+            
+            
+            
+         
+                
