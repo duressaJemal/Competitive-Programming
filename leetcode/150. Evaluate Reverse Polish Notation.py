@@ -1,21 +1,27 @@
-import math
+# link: https://leetcode.com/problems/evaluate-reverse-polish-notation/
+
+# time: O(n)
+# space: O(n)
 
 class Solution:
-    def evalRPN(self, tokens):
-
-        operators = {"*", "+", "-", "/"}
-        container = []
-        for i in range(len(tokens)):
-            if tokens[i] not in operators:
-                container.append(tokens[i])
+    def evalRPN(self, tokens: List[str]) -> int:
+        
+        operators = ("+", "-", "/", "*")
+        stack = []
+        
+        for token in tokens:
+            
+            if token not in operators:
+                stack.append(token)
             else:
-                a = container.pop()
-                b = container.pop()
-
-                value = eval(b + tokens[i] + a)
+                right = stack.pop()
+                left  = stack.pop()
+                value = eval(left + token + right)
                 if value > 0:
-                    container.append(str(math.floor(value)))
+                    stack.append(str(floor(value)))
                 else:
-                    container.append(str(math.ceil(value)))
-                    
-        return int(container[0])
+                    stack.append(str(ceil(value)))
+            
+        return int(stack[0])
+        
+        
