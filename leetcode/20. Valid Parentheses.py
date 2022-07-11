@@ -1,18 +1,23 @@
+# link: https://leetcode.com/problems/valid-parentheses/submissions/
+
+# time: O(n)
+# space: O(n)
+
 class Solution:
     def isValid(self, s: str) -> bool:
         
-        stack = []
-        openingTag = {"(":")", "{":"}", "[":"]"}
-        closingTag = {")":"(", "}":"{", "]":"["}
+        n = len(s)
+        tags = {")":"(", "]":"[", "}":"{"}
+        stack = [0]
         
-        for i in range(len(s)): 
-            if s[i] in openingTag:
-                stack.append(s[i])
-                continue
-            if len(stack) > 0 and closingTag[s[i]] == stack[-1]:
-                stack.pop()
+        for i in s:
+            if i in tags:
+                if stack.pop() != tags[i]:
+                    return False
             else:
-                return False
-        if len(stack) == 0:
-            return True
-        return False
+                stack.append(i)
+            
+        return len(stack) == 1
+            
+
+        
