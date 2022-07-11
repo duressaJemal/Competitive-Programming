@@ -1,26 +1,24 @@
+# link: https://leetcode.com/problems/reverse-substrings-between-each-pair-of-parentheses/submissions/
+
+# time: O(n ** 2)
+# space: O(n)
+
 class Solution:
     def reverseParentheses(self, s: str) -> str:
-    
-        arr = list(s)
-        openning = []
-        output = 
         
-        def reverse(arr, start, end):
-            while( start < end):
-                arr[start], arr[end] = arr[end], arr[start]
-                start += 1
-                end -= 1
-
-        for i in range(len(arr)):
-            if arr[i] == "(":
-                openning.append(i)
-                
-            if arr[i] == ")":
-                reverse(arr, openning[-1], i)
-                openning.pop()
-
-        for i in range(len(arr)):
-            if arr[i] != ")" and arr[i] != "(":
-                output.append(arr[i])
-                
-        return "".join(output)
+        stack = []
+        popped = []
+        
+        for i in s:
+            if i == ")":
+                while stack[-1] != "(":
+                    popped.append(stack.pop())
+                stack.pop()
+                stack += popped
+                popped = []
+                    
+            else:
+                stack.append(i)
+        
+        return "".join(stack)
+        
