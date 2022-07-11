@@ -22,3 +22,4 @@ class Solution:
         
         return "".join(stack)
         
+# CHECKOUT THE OPTIMIZED (O(n)) SOLUTION
