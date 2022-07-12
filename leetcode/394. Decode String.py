@@ -1,34 +1,64 @@
+# link: https://leetcode.com/problems/decode-string/submissions/
+
+# RECURSION
+
+# time: O(n)
+# space: O(n)
+
 class Solution:
     def decodeString(self, s: str) -> str:
         
-        stack = []
-        s = list(s)
+        n = len(s)
         
-        for string in s:
-            if string == "]":
-                container = []
-                popped = stack.pop()
-                
-                while not popped.isnumeric() and stack:
-                    container.append(popped)
-                    popped = stack.pop()
-                    
-                container = container[:-1]
-                container = container[::-1]
-                lenght = int(popped)
-                
-                for i in range(lenght):
-                    stack += container
+        def helper(s, index):
+            num = 0
+            result = []
+            while index < n:
+                if s[index].isdigit():
+                    num = num * 10 + int(s[index])
+                elif s[index] == "[":
+                    ans, i =   helper(s, index + 1)
+                    result += num * ans
+                    index, num = i, 0
+                elif s[index] == "]":
+                    return result, index 
+                else:
+                    result.append(s[index])  
+                index += 1
+            return result
+        return "".join(helper(s, 0))
+            
+# STACK
 
-            else:
-                
-                # for concatenating number strigs
-                if stack and  stack[-1].isnumeric() and string.isnumeric():
-                    stack[-1] = stack[-1] + string
-                    continue
+# time: 
+# space: 
+
+class Solution:
+    def decodeString(self, s: str) -> str:
+        
+        n = len(s)
+        end = 0
+        stack = []
+        
+        while end < n:
+            
+            if s[end] == "]":
+                values = []
+                digit = ""
+                while not stack[-1].isdigit():
+                    values.append(stack.pop())
                     
-                stack.append(string)
-                
+                while stack and stack[-1].isdigit():
+                    digit += stack.pop()
+                    
+                values.pop() # for removing the openning tag
+                stack += int(digit[::-1]) * values[::-1] 
+            else:
+                stack.append(s[end])
+            end += 1
+        
         return "".join(stack)
         
-                    
+        
+        
+            
