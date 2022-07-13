@@ -1,26 +1,22 @@
+# link: https://leetcode.com/problems/validate-stack-sequences/submissions/
+
+# time: O(n)
+# space: O(n)
+
 class Solution:
     def validateStackSequences(self, pushed: List[int], popped: List[int]) -> bool:
         
-        pushed_pointer = 0
-        popped_pointer = 0
+        n = len(popped)
+        stack = []
+        pop_index = 0
         
-        while popped_pointer < len(popped):
+        for push_element in pushed:
             
-            if popped[popped_pointer] == pushed[pushed_pointer]:
-                pushed.pop(pushed_pointer)
-                
-                # for preventing negative value assignment for index
-                if pushed_pointer == 0 and len(pushed) > 0:
-                    popped_pointer += 1
-                    continue
-                    
-                pushed_pointer -= 1
-                popped_pointer += 1
-                continue
-                
-            if pushed_pointer == len(pushed) - 1:
-                return False
+            stack.append(push_element)
+            while stack and pop_index < n and stack[-1] == popped[pop_index]:
+                stack.pop()
+                pop_index += 1
             
-            pushed_pointer += 1 
+        return pop_index == n
             
-        return True
+            
