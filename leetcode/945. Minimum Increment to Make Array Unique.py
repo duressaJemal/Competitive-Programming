@@ -1,18 +1,25 @@
+# link: https://leetcode.com/problems/minimum-increment-to-make-array-unique/submissions/
+
+# time: O(nlog(n))
+# space: O(n)
+
 class Solution:
     def minIncrementForUnique(self, nums: List[int]) -> int:
         
-        nums.sort()
-        counter, add = 0, 0
-        holder, unique = [], set()
+        n = len(nums)
+        start, addition = 0, 0
+        unique = set()
         
-        for num in nums:
+        nums.sort()
+        while start < n:
+
+            if nums[start] in unique:
+                difference = (nums[start - 1] + 1) - nums[start]
+                nums[start] += difference
+                addition += difference
+            unique.add(nums[start])
+            start += 1
             
-            if num in unique:
-                add = holder[-1] - num + 1
-                num += add
-                counter += add
+        return addition
                 
-            unique.add(num)
-            holder.append(num)
-                
-        return counter
+        
