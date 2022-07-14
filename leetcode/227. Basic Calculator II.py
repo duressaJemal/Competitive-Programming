@@ -1,67 +1,43 @@
+# link: https://leetcode.com/problems/basic-calculator-ii/submissions/
+
+# time: O(n)
+# space: O(n)
+
 class Solution:
     def calculate(self, s: str) -> int:
         
-        s = s.replace (" ", "")
-        s = list(s)
+        n = len(s)
+        operator, number = "+", 0
+        stack = []
         
-        # for concatinating numbers that are larger than 9
-        start = 0
-        while start < len(s):
+        for i in range(n):
+            char = s[i]
+            if char.isdigit():
+                number = number * 10 + int(char)
             
-            while start + 1 != len(s) and s[start].isnumeric() and s[start + 1].isnumeric():
-                s[start] = s[start] + s[start + 1]
-                s.pop(start + 1)
+            if (not char.isdigit() and not char.isspace()) or i == n - 1:
                 
-            start += 1
-            
-        if len(s) == 1: # early handling
-            return int(s[0])
-        
-        higher = {"*", "/"}
-        
-        mult_div = []
-        store = []
-        
-        # multiplication and division
-        for string in s:
-            if string in higher:
-                store.append(string)
-                
-            else:
-                
-                if store and mult_div:
-                    left = int(mult_div.pop())
-                    
-                    if store[-1] == "*":
-                        mult_div.append(floor(left * int(string)))
+                if operator == "+":
+                    stack.append(number)
+                elif operator == "-":
+                    stack.append(-number)
+                elif operator == "*":
+                    stack.append(stack.pop() * number)
+                elif operator == "/":
+                    popped = stack.pop()
+                    if popped < 0:
+                        stack.append(-((0 - popped) // number))
                     else:
-                        mult_div.append(floor(left / int(string)))
-                    store.pop()
-                    
-                else:
-                    mult_div.append(string)
-
-        # addition
-        add_sub = []
-        lower = {"-", "+"}
-        for value in mult_div:
-            if value in lower:
-                store.append(value)
-            else: 
-                if store and add_sub:
-                    left = int(add_sub.pop())
-
-                    if store[-1] == "+":
-                        add_sub.append(left + int(value))
-                    else:
-                        add_sub.append(left - int(value))
-                    store.pop()
-
-                else:
-                    add_sub.append(value)
-
-            
-        return int(add_sub[0])
+                        stack.append(popped // number)
+                operator = char
+                number = 0
+        
+        end, output = 0, 0
+        while end < len(stack):
+            output += stack.pop()
+        
+        return output
             
             
+# CHECK THE OPTIMIZED SOLUTION
             
