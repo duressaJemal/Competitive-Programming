@@ -1,33 +1,42 @@
+# link: https://leetcode.com/problems/find-the-winner-of-the-circular-game/submissions/
+
+# Iterative
+
+# time: O(n)
+# space: O(n)
+
 class Solution:
     def findTheWinner(self, n: int, k: int) -> int:
         
-        arr = list(range(1, n + 1))
-        starter = 0
-        return self.recursive(arr, k, starter)
+        players = list(range(1, n + 1))
+        index = 0
+        
+        while len(players) > 1:
+            
+            index = (index + k - 1) % len(players)
+            players.pop(index)
+            index = index % len(players)
+        
+        return players[0]
+        
     
-    def recursive(self, arr, jump, starter):
-        """
-        Return the last value after performing series of k jumps and removal
-        arr: list generated from consecutive n natural numbers
-        jump: k
-        starter: the index from which counting begins
-        
-        """
-        # recursion terminating case
-        if len(arr) == 1:
-            return arr[0]
-        
-        # for finding the index to remove
-        remove = (starter + jump - 1) % len(arr)
-        previous = (starter + jump - 2) % len(arr)
-        
-        if remove < previous:
-            previous -= 1
+# Recursive
 
-        arr.pop(remove)
-        # keeping track of the index to start from 
-        starter = (previous + 1) % len(arr)
+# time: O(n^2)
+# space: O(n^2)
+
+class Solution:
+    def findTheWinner(self, n: int, k: int) -> int:
         
-        return True and self.recursive( arr, jump, starter)
-    
+        def jump(n, k, starting_index):
         
+            if len(n) == 1:
+                return n[0]
+            
+            remove = (starting_index + k - 1) % len(n) 
+            n.pop(remove) # is costy
+            remove = remove % len(n)
+            return jump(n, k, remove)
+        
+        return jump(list(range(1, n + 1)), k, 0)
+            
