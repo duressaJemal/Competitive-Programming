@@ -1,23 +1,55 @@
-# link https://leetcode.com/problems/path-sum/
+# link: https://leetcode.com/problems/path-sum/submissions/
 
-# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
+# DFS
+
+# time: O(n)
+# space: O(n)
+
 class Solution:
     def hasPathSum(self, root: Optional[TreeNode], targetSum: int) -> bool:
         
+        SUM = 0
         
-        def dfs(node, Sum):
+        def dfs(node, SUM):
             
-            Sum += node.val
+            SUM += node.val
             
             if not node.left and not node.right:
-                return Sum == targetSum
+                return SUM == targetSum
             
-            return (node.left and dfs(node.left, Sum)) or (node.right and dfs(node.right, Sum))
+            
+            return (node.left and dfs(node.left, SUM)) or (node.right and dfs(node.right, SUM))
         
+        return root and dfs(root, SUM)
+     
+        
+# BFS
+
+# time: O(n)
+# space: O(n)
+
+class Solution:
+    def hasPathSum(self, root: Optional[TreeNode], targetSum: int) -> bool:
+        
+        if not root:
+            return False
+        
+        queue = deque([(root, targetSum - root.val)])
+        
+        while queue:
             
-        return root and dfs(root, 0)
+            node, SUM = queue.popleft()
+            
+            if not node.left and not node.right and SUM == 0:
+                return True
+            
+            if node.left:
+                queue.append((node.left, SUM - node.left.val))
+            if node.right:
+                queue.append((node.right, SUM - node.right.val))
+            
+        return False
+    
+
+
+
