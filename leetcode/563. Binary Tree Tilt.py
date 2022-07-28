@@ -1,31 +1,39 @@
-#link: https://leetcode.com/problems/binary-tree-tilt/
+# link: https://leetcode.com/problems/binary-tree-tilt/submissions/
+
+# DFS
 
 # time: O(n)
 # space: O(n)
 
-# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
 class Solution:
     def findTilt(self, root: Optional[TreeNode]) -> int:
         
-        total = 0
-        def dfs(root):
-        
-            nonlocal total
-            if not root: return 0
+        SUM = 0
+    
+        def dfs(node):
             
-            left = dfs(root.left)
-            right = dfs(root.right)
-            total += abs(left - right)
+            nonlocal SUM
             
-            return root.val + left + right
+            if not node:
+                return 0
+            
+            left = dfs(node.left)
+            right = dfs(node.right)
+            
+            SUM += abs(left - right)
+            return  node.val + left + right
         
         dfs(root)
-        return total
-            
-
         
+        return SUM
+
+
+# BFS
+
+# time:
+# space:
+
+# class Solution:
+#     def findTilt(self, root: Optional[TreeNode]) -> int:
+     
+
