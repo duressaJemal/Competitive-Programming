@@ -32,7 +32,6 @@ class Solution:
                 if board[row][col] == "O" and (row in [0, m - 1] or col in [0, n - 1]):
                     dfs(row, col)
 
-        
         for row in range(m):
             for col in range(n):
                 
@@ -47,56 +46,53 @@ class Solution:
                     
 
         
-# BFS --- TLE
+# BFS 
 
 # time: O(m*n)
 # space: O(m*n)
 
-# class Solution:
-#     def solve(self, board: List[List[str]]) -> None:
+class Solution:
+    def solve(self, board: List[List[str]]) -> None:
         
-#         m = len(board)
-#         n = len(board[0])
+        m = len(board)
+        n = len(board[0])
+        count = 0
+        queue = deque([])
+                    
+        for row in range(m):
+            for col in [0 ,n - 1]:
+                if board[row][col] == "O":
+                    board[row][col] = "#"
+                    queue.append((row, col))
         
-#         visited = set()
+        for row in [0, m - 1]:
+            for col in range(1, n - 1):
+                if board[row][col] == "O":
+                    board[row][col] = "#"
+                    queue.append((row, col))
         
-#         def bfs(r, c):
+        while queue:
             
-#             queue = deque([(r, c)])
+            row, col = queue.popleft()
             
-#             while queue:
+            for dirc in [(0, 1), (0, -1), (1, 0), (-1, 0)]:
+                nr = row + dirc[0]
+                nc = col + dirc[1]
                 
-#                 row, col = queue.popleft()
-#                 board[row][col] = "#"
+                if nr < 0 or nc < 0 or nr >= m or nc >= n:
+                    continue
                 
-#                 for dirc in [(0, 1), (0, -1), (1, 0), (-1, 0)]:
-#                     nr = row + dirc[0]
-#                     nc = col + dirc[1]
-                    
-#                     if nr < 0 or nc < 0 or nr >= m or nc >= n or board[nr][nc] != "O" or (r, c) in visited:
-#                         continue
-                    
-#                     queue.append((nr, nc))
-#                     visited.add((nr, nc))
-                    
-                    
-#         for row in range(m):
-#             for col in range(n):
+                if board[nr][nc] == "O":
+                    board[nr][nc] = "#"
+                    queue.append((nr, nc))
                 
-#                 if board[row][col] == "O" and (row in [0, m - 1] or col in [0, n - 1]):
-#                     bfs(row, col)
+        for row in range(m):
+            for col in range(n):
+                if board[row][col] == "O":
+                    board[row][col] = "X"
         
-#         for row in range(m):
-#             for col in range(n):
-                
-#                 if board[row][col] == "O":
-#                     board[row][col] = "X"
-                    
-#         for row in range(m):
-#             for col in range(n):
-                
-#                 if board[row][col] == "#":
-#                     board[row][col] = "O"
-    
-
-        
+        for row in range(m):
+            for col in range(n):
+                if board[row][col] == "#":
+                    board[row][col] = "O"
+   
