@@ -1,17 +1,17 @@
-# link: https://leetcode.com/problems/kth-largest-element-in-a-stream/
+# Link: https://leetcode.com/problems/kth-largest-element-in-a-stream/
 
 class KthLargest:
     
-    # time: O(n)
-    # space: O(n)
+    # Time: O(N)
+    # Space: O(N)
     
     def __init__(self, k: int, nums: List[int]):
         self.heap = nums
         heapify(self.heap)
         self.k = k
 
-    # time: O((n - k) + log(n))
-    # space: O(n)
+    # Time: O(Nlog(N))
+    # Space: O(N)
     
     def add(self, val: int) -> int:
         
