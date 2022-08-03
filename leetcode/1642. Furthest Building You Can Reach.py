@@ -1,14 +1,24 @@
-# link: https://leetcode.com/problems/furthest-building-you-can-reach/submissions/
+# Link: https://leetcode.com/problems/furthest-building-you-can-reach/
+
+# Time: O(N * log(N))
+# Space: O(N)
 
 class Solution:
-    def furthestBuilding(self, A, bricks, ladders):
+    def furthestBuilding(self, heights: List[int], bricks: int, ladders: int) -> int:
+        
+        n = len(heights)
         heap = []
-        for i in range(len(A) - 1):
-            d = A[i + 1] - A[i]
-            if d > 0:
-                heapq.heappush(heap, d)
-            if len(heap) > ladders:
-                bricks -= heapq.heappop(heap)
-            if bricks < 0:
-                return i
-        return len(A) - 1
+        
+        for i in range(n - 1):
+            jump = heights[i + 1] - heights[i]
+            
+            if jump > 0:
+                heappush(heap, jump)
+                if len(heap) > ladders:
+                    bricks -= heappop(heap)
+                if bricks < 0:
+                    return i
+        
+        return n - 1
+
+    
