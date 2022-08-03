@@ -1,9 +1,9 @@
-# link: https://leetcode.com/problems/top-k-frequent-elements/submissions/
+# Link: https://leetcode.com/problems/top-k-frequent-elements/submissions/
 
 # Heap
 
-# time: O(n)
-# space: O(n)
+# Time: O(N + Klog(N))
+# Space: O(N)
 
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
@@ -23,8 +23,8 @@ class Solution:
             
 # Sorting
 
-# time: O(nlog(n))
-# space: O(n)
+# Time: O(Nlog(N))
+# Space: O(N)
 
 class Solution:
     def topKFrequent(self, nums, k):
