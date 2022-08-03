@@ -1,22 +1,21 @@
-# link: https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/
+# Link: https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/
 
-# time: O(n * 2)
-# space: O(n * 2)
+# Heap
 
-# heap
-import heapq
+# Time: O(k * log(N))  -- in the worst case k == N^2
+# Space: O(n^2)
 
 class Solution:
     def kthSmallest(self, matrix: List[List[int]], k: int) -> int:
         
         heap = [element for row in matrix for element in row]
-        heapq.heapify(heap)
+        heapify(heap)
 
         while k:
             
             if k == 1:
-                return heapq.heappop(heap)
-            heapq.heappop(heap)
+                return heappop(heap)
+            
+            heappop(heap)
             k -= 1
         
-
