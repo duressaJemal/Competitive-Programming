@@ -1,15 +1,15 @@
-# https://leetcode.com/problems/top-k-frequent-words/submissions/
+# Link: https://leetcode.com/problems/top-k-frequent-words/submissions/
 
-# time: O(n * log(k)) 
-# space: O(n)
+# Time: O(N + Klog(N))
+# Space: O(N)
 
 class Solution:
     def topKFrequent(self, words: List[str], k: int) -> List[str]:
         
-        counter = collections.Counter(words)
+        counter = collections.Counter(words) 
         output = []
         
-        heap = [(-value, key) for key, value in counter.items()]
+        heap = [(-value, key) for key, value in counter.items()] 
         heapify(heap)
         
         while k:
@@ -18,5 +18,3 @@ class Solution:
         
         return output
         
-        
-# follow-up: why is it n not k
