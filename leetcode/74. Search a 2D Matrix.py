@@ -1,6 +1,6 @@
 # Link: https://leetcode.com/problems/search-a-2d-matrix/
 
-# Binary search
+# Binary search -- Brute
 
 # Time: O(N * log(max - min))
 # Space: O(1)
@@ -46,6 +46,31 @@ class Solution:
             return True
         
         return False
+    
+    
+    
+# Binary search -- optimal
+
+# Time: O(log(M * N))
+# Space:n O(1)
+
+class Solution:
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        
+        m = len(matrix)
+        n = len(matrix[0])
+        
+        start, end = 0, m * n - 1
+        
+        while start < end:
+            mid = start + (end - start) // 2
+            if matrix[mid//n][mid%n] < target:
+                start = mid + 1
+            else:
+                end = mid
+                
+        return matrix[start // n][start % n] == target
+
                 
             
             
