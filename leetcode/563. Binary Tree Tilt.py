@@ -2,8 +2,8 @@
 
 # DFS
 
-# time: O(n)
-# space: O(n)
+# Time: O(N)
+# Space: O(N)
 
 class Solution:
     def findTilt(self, root: Optional[TreeNode]) -> int:
