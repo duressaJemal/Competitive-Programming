@@ -2,8 +2,8 @@
 
 # BFS
 
-# time: O(n)
-# space: O(n)
+# Time: O(N)
+# Space: O(N)
 
 class Solution:
     def sumEvenGrandparent(self, root: TreeNode) -> int:
@@ -32,8 +32,8 @@ class Solution:
 
 # DFS
 
-# time: O(n)
-# space: O(n)
+# Time: O(N)
+# Space: O(N)
 
 class Solution:
     def sumEvenGrandparent(self, root: TreeNode) -> int:
