@@ -11,8 +11,8 @@ class Employee:
 
 # DFS
 
-# time: O(n)
-# space: O(n)
+# Time: O(N)
+# Space: O(N)
 
 
 class Solution:
@@ -31,8 +31,8 @@ class Solution:
 
 # BFS
 
-# time: O(n)
-# space: O(n)
+# Time: O(N)
+# Space: O(N)
 
 
 class Solution:
