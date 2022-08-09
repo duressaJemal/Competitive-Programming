@@ -2,54 +2,71 @@
 
 # DFS
 
-# time: O(n)
-# space: O(n)
+# Time: O(N)
+# Space: O(N)
 
 class Solution:
     def hasPathSum(self, root: Optional[TreeNode], targetSum: int) -> bool:
-        
-        SUM = 0
         
         def dfs(node, SUM):
             
             SUM += node.val
             
             if not node.left and not node.right:
+                
                 return SUM == targetSum
             
-            
             return (node.left and dfs(node.left, SUM)) or (node.right and dfs(node.right, SUM))
-        
-        return root and dfs(root, SUM)
-     
-        
-# BFS
+            
+        return root and dfs(root, 0)
+    
 
-# time: O(n)
-# space: O(n)
+
+# BFS
+    
+# Time: O(N)
+# Space: O(N)
 
 class Solution:
     def hasPathSum(self, root: Optional[TreeNode], targetSum: int) -> bool:
         
-        if not root:
+        if not root: 
             return False
         
-        queue = deque([(root, targetSum - root.val)])
+        queue = deque([(root, targetSum)])
         
         while queue:
             
             node, SUM = queue.popleft()
+            current_value = SUM - node.val
             
-            if not node.left and not node.right and SUM == 0:
+            if not node.left and not node.right and current_value == 0: 
                 return True
             
             if node.left:
-                queue.append((node.left, SUM - node.left.val))
+                queue.append((node.left, current_value))
             if node.right:
-                queue.append((node.right, SUM - node.right.val))
+                queue.append((node.right, current_value))
             
         return False
+                
+                
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     
-
-
-
+    
+    
