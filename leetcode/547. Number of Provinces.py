@@ -2,8 +2,8 @@
 
 # DFS
 
-# time: O(n^2)
-# space: O(n^2)
+# Time: O(N^2)
+# Space: O(N^2)
 
 class Solution:
     def findCircleNum(self, isConnected: List[List[int]]) -> int:
