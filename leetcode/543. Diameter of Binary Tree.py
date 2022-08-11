@@ -1,0 +1,58 @@
+# Link: https://leetcode.com/problems/diameter-of-binary-tree/
+
+# DFS -- Brute force
+
+# Time: O(N ^ 2)
+# Space: O(N)
+
+class Solution:
+    def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
+        
+        def diameter(node):
+            
+            if not node: return 0
+            
+            l_height = height(node.left)
+            r_height = height(node.right)
+            l_diameter = diameter(node.left)
+            r_diameter = diameter(node.right)
+        
+            return max((l_height + r_height + 2), max(l_diameter, r_diameter))
+            
+            
+        def height(node):
+            
+            if not node:
+                return -1
+            
+            left = height(node.left)
+            right = height(node.right)
+            
+            return max(left, right) + 1
+        
+        return diameter(root)
+    
+# DFS -- Optimized
+
+# Time: O(N)
+# Space: O(N)
+
+class Solution:
+    def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
+        
+        output = [0]
+        
+        def dfs(node):
+            
+            if not node: return -1
+            
+            l_height = dfs(node.left)
+            r_height = dfs(node.right)
+            
+            output[0] = max(output[0], l_height + r_height + 2)
+            
+            return max(l_height, r_height) + 1
+        
+        dfs(root)
+        return output[0]
+
