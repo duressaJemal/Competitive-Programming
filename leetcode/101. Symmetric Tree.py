@@ -1,6 +1,7 @@
 # Link: https://leetcode.com/problems/symmetric-tree/
 
-# BFS
+
+# BFS (Approach 1)
 
 # Time: O(N)
 # Space: O(N)
@@ -39,6 +40,37 @@ class Solution:
         queue.append((node.right, 0) if node.right else (None, 0))
         
         
+
+# BFS (Approach 2)
+
+# Time: O(N)
+# Space: O(N)
+
+
+class Solution:
+    def isSymmetric(self, root: Optional[TreeNode]) -> bool:
+        
+        if not root.left and not root.right: return True
+        
+        queue = deque([root.left, root.right])
+        
+        while queue:
+            
+            left = queue.popleft()
+            right = queue.popleft()
+            
+            if not left and not right:
+                continue
+                
+            if not left or not right: return False
+            if left.val != right.val: return False
+            
+            queue.append(left.left)
+            queue.append(right.right)
+            queue.append(left.right)
+            queue.append(right.left)
+
+        return True
 
 # DFS
 
