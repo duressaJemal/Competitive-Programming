@@ -1,39 +1,28 @@
-# link: https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/submissions/
+# Link: https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/
+
 # BFS
 
-# time: O(n)
-# space: O(n)
+# Time: O(N)
+# Space: O(N)
 
 class Solution:
     def zigzagLevelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
         
-        dq = deque([root] if root else [])
+        queue = deque([root] if root else [])
+        left_to_right = True
         output = []
-        flag = True
         
-        while len(dq):
-            
+        while queue:
+            length = len(queue)
             temp = []
-            length = len(dq)
-               
+            
             for _ in range(length):
-                parent = dq.popleft()
-                if parent.left:
-                    dq.append(parent.left)
-                if parent.right:
-                    dq.append(parent.right)
-                    
+                parent = queue.popleft()
                 temp.append(parent.val)
-            
-            if flag:
-                output.append(temp)
-                flag = False
-            
-            else:
-                output.append(temp[::-1])
-                flag = True
-                
-        return output
-                
-                
-                     
+                if parent.left: queue.append(parent.left)
+                if parent.right: queue.append(parent.right)
+                    
+            output.append(temp if left_to_right else temp[::-1])
+            left_to_right = not left_to_right
+               
+        return output  
