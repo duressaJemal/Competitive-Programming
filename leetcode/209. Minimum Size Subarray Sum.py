@@ -23,3 +23,4 @@ class Solution:
     
 
 # Smart solution with O(N*log(N)) :)
+# prefix and binary search
