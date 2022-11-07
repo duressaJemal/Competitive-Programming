@@ -1,22 +1,48 @@
-# link https://leetcode.com/problems/unique-paths/
+# Link: https://leetcode.com/problems/unique-paths/
+#Q: 62. Unique Paths.py
 
-# space O(m + n)
-# time O( m * n ) 
+# Bottom-up
+
+# Time: O(M*N)
+# Space: O(M*N)
 
 class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
         
-        memo = {}
+        dp = [[0] * n for _ in range(m)]
+        dp[0][0] = 1
         
-        def helper(r, c):
+        for i in range(m):
+            for j in range(n):
+                if i == 0: 
+                    dp[i][j] = 1
+                elif j == 0:
+                    dp[i][j] = 1
+                else:    
+                    dp[i][j] = dp[i - 1][j] + dp[i][j - 1]
+        
+        return dp[m - 1][n - 1]
+    
+
+# Top-down
+
+# Time: O(M*N)
+# Space: O(M*N)
+
+class Solution:
+    def uniquePaths(self, m: int, n: int) -> int:
+        dp = [[0] * n for _ in range(m)]
+        
+        def helper(i, j):
+            if i == 0 or j == 0: return 1
+            if dp[i][j] != 0: return dp[i][j]
             
-            if (r, c) in memo: return memo[(r,c)]
-            if r == m or c == n: return 0
-            if r == m - 1 and c == n - 1: return 1
-            
-            memo[(r, c)] = helper(r + 1, c) + helper(r, c + 1)
-           
-            return memo[(r, c)]
+            dp[i][j] = helper(i, j - 1) + helper(i - 1, j)
+            return dp[i][j]
         
-        return helper(0, 0)
+        return helper(m - 1, n - 1)
         
+
+        
+        
+    
