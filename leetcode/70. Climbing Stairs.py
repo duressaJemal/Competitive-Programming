@@ -1,32 +1,43 @@
+# Link: https://leetcode.com/problems/climbing-stairs/
+#Q: 70. Climbing Stairs
+
+# Bottom-up
+
+# Time: O(N)
+# Space: O(N)
+
 class Solution:
     def climbStairs(self, n: int) -> int:
         
-    # TOP DOWN
-        d = {}
-        def climb(index):
-            
-            if index <= 1:
-                return 1
-            
-            if index in d:
-                return d[index]
-            steps = climb(index - 1) + climb(index - 2)
-            if index not in d:
-                d[index] = steps 
-                
-            return steps
+        dp = [0] * (n + 1)
+        dp[0], dp[1] = 1, 1
         
-        return climb(n)
-        
-    # BOTTOM UP
-    
-    def climbStairs(self, n: int) -> int:
+        for i in range(2, n + 1):
+            for j in [1, 2]:
+                if j <= i:
+                    dp[i] += dp[i - j]
+                    
+        return dp[n]
 
-        first, second = 1, 1
+# Top-down
+
+# Time: O(N)
+# Space: O(N)
+
+class Solution:
+    def climbStairs(self, n: int) -> int:
         
-        for i in range(n - 1):
-            temp = first
-            first += second
-            second = temp
-            
-        return first
+        dp = [0] * (n + 1)
+        
+        def helper(i):
+            if i == 0 or i == 1: return 1
+            if dp[i] != 0: return dp[i]
+            dp[i] = helper(i - 1) + helper(i - 2)
+            return dp[i]
+        
+        return helper(n)
+        
+        
+        
+        
+        
