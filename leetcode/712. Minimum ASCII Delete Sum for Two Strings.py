@@ -1,7 +1,7 @@
 # Link: https://leetcode.com/problems/minimum-ascii-delete-sum-for-two-strings/
 #Q: 712. Minimum ASCII Delete Sum for Two Strings
 
-# Top-down
+# Bottom-up
 
 # Time: O(L1*L2)
 # Space: O(L1*L2)
@@ -29,7 +29,7 @@ class Solution:
         return dp[len(s1)][len(s2)]
                     
                     
-# Bottom-up
+# Top-down
 
 # Time: O(L1*L2)
 # Space: O(L1*L2)
