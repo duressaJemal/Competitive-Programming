@@ -38,21 +38,19 @@ class Solution:
 # Space: O(N)
 
 class Solution:
+    diameter = 0
     def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
         
-        output = [0]
+        def helper(root):
+            if not root: return -1
+            left = helper(root.left)
+            right = helper(root.right)
+            
+            # keep track of the diameter
+            self.diameter = max(self.diameter, left + right + 2) 
+            return 1 + max(left, right) # return height
         
-        def dfs(node):
-            
-            if not node: return -1
-            
-            l_height = dfs(node.left)
-            r_height = dfs(node.right)
-            
-            output[0] = max(output[0], l_height + r_height + 2)
-            
-            return max(l_height, r_height) + 1
+        helper(root)
+        return self.diameter
         
-        dfs(root)
-        return output[0]
 
