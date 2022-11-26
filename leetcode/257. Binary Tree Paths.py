@@ -1,28 +1,29 @@
 # Link: https://leetcode.com/problems/binary-tree-paths/
-
-# DFS 
+#Q: 257. Binary Tree Paths
 
 # Time: O(N)
-# Space: O(N))
-
+# Space: O(N)
 
 class Solution:
     def binaryTreePaths(self, root: Optional[TreeNode]) -> List[str]:
         
         output = []
         
-        def dfs(node, path, output):
+        def helper(root, path):
+            if not root:
+                return
+      
+            path += str(root.val)
+            if not root.left and not root.right:
+                output.append(path)
             
-            if node:
-                path += str(node.val)
-                if not node.left and not node.right:
-                    output.append(path)
-                path += "->"
-                dfs(node.left, path, output)
-                dfs(node.right, path, output)
-        
-        dfs(root, "", output)
-        
+            if root.left:
+                helper(root.left, path + "->")
+            if root.right:
+                helper(root.right, path + "->")
+            
+            
+        helper(root, "")
         return output
     
 class Solution:
