@@ -1,23 +1,25 @@
 # Link: https://leetcode.com/problems/smallest-subtree-with-all-the-deepest-nodes/
-
-# DFS
+#Q: 865. Smallest Subtree with all the Deepest Nodes
 
 # Time: O(N)
-# Space: O(N)
+# Space: O(H)
 
 class Solution:
     def subtreeWithAllDeepest(self, root: TreeNode) -> TreeNode:
         
-        def dfs(node):
-            if not node:
-                return (None, 0)
+        def helper(root):
+            if not root: return (None, -1)
             
-            left_ca, left_height = dfs(node.left)
-            right_ca, right_height = dfs(node.right)
+            left = helper(root.left)
+            right = helper(root.right)
             
-            if left_height == right_height: return (node, left_height + 1)
-            elif left_height > right_height: return (left_ca, left_height + 1)
-            else: return (right_ca, right_height + 1)
+            if left[1] == right[1]:
+                return (root, left[1] + 1)
+            else:
+                # compare
+                if left[1] > right[1]:
+                    return (left[0], left[1] + 1)
+                else:
+                    return (right[0], right[1] + 1)
             
-        return dfs(root)[0]
-        
+        return helper(root)[0]
