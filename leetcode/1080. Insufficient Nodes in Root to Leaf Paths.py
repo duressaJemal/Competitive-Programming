@@ -8,32 +8,28 @@
 class Solution:
     def sufficientSubset(self, root: Optional[TreeNode], limit: int) -> Optional[TreeNode]:
         
-        def dfs(node, total):
+        #Post order
+        def insufficient_path(root, total):
+            if not root: return 1
+            total += root.val
+            if not root.left and not root.right:
+                if total < limit:
+                    return 1
+                return 0
             
-            if not node: return True
+            left = insufficient_path(root.left, total)
+            right = insufficient_path(root.right, total)
             
-            total += node.val
-
-            if not node.left and not node.right:
-                return total < limit
-            
-            left = dfs(node.left, total)
-            right = dfs(node.right, total)
-            
-            
-            if left and right:
-                node.left = None
-                node.right = None
-                return True
-            else:
-                if left:
-                    node.left = None
-                if right:
-                    node.right = None
-                return False
+            if left:
+                root.left = None
+            if right:
+                root.right = None
+                
+            if left + right == 2:
+                return 1
+            return 0
         
-        return None if dfs(root, 0) else root
-
+        return None if insufficient_path(root, 0) else root
 
     
     
