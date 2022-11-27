@@ -1,32 +1,23 @@
 
-# link: https://leetcode.com/problems/n-ary-tree-level-order-traversal/submissions/
+# Link: https://leetcode.com/problems/n-ary-tree-level-order-traversal/
+#Q: 429. N-ary Tree Level Order Traversal
 
-
-# Bfs
-# time: O(n)
-# space: O(n)
+# Time: O(N)
+# Space: O(N)
 
 class Solution:
     def levelOrder(self, root: 'Node') -> List[List[int]]:
         
-        dq = deque([root] if root else [])
         output = []
-        
-        while len(dq):
+        queue = deque([root]) if root else []
+        while queue:
+            n, store = len(queue), []
+            for i in range(n):
+                root = queue.popleft()
+                store.append(root.val)
+                for child in root.children:
+                    queue.append(child)
             
-            temp = []
-            length = len(dq)
-            
-            for _ in range(length):
-                parent = dq.popleft()
-                childrens = parent.children
-                
-                for i in range(len(childrens)):
-                    dq.append(childrens[i])
-                
-                temp.append(parent.val)
-            
-            output.append(temp)
-        
+            output.append(store)
         return output
                     
