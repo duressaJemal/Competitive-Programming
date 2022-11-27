@@ -1,37 +1,26 @@
 
+# Link: https://leetcode.com/problems/binary-tree-level-order-traversal/
+#Q: 102. Binary Tree Level Order Traversal
 
-# link: https://leetcode.com/problems/binary-tree-level-order-traversal/
-
-
-# BFS
-
-# time: O(n)
-# space: O(n)
+# Time: O(N)
+# Space: O(N)
 
 class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
-
-        dq = deque([root] if root else [])
         output = []
+        queue = deque([root]) if root else []
         
-        while len(dq):
+        while queue:
+            n, store = len(queue), []
+            for i in range(n):
+                root = queue.popleft()
+                store.append(root.val)
+                if root.left:
+                    queue.append(root.left)
+                if root.right:
+                    queue.append(root.right)
+            output.append(store)
             
-            temp = []
-            l = len(dq)
-            
-            for _ in range(l):
-                
-                parent = dq.popleft()
-                if parent.left: 
-                    dq.append(parent.left)
-                if parent.right: 
-                    dq.append(parent.right)
-
-                temp.append(parent.val)
-                
-            output.append(temp)
-        
         return output
-            
 
 
