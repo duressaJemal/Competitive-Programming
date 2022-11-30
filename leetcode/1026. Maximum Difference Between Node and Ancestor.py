@@ -1,28 +1,56 @@
-# Link: https://leetcode.com/problems/maximum-difference-between-node-and-ancestor/
 
-# DFS
+# Link: https://leetcode.com/problems/maximum-difference-between-node-and-ancestor/
+#Q: 1026. Maximum Difference Between Node and Ancestor
+
+# DFS(1)
 
 # Time: O(N)
-# Space: O(N))
+# Space: O(N)
 
 class Solution:
     def maxAncestorDiff(self, root: Optional[TreeNode]) -> int:
         
-        self.output = 0
+        self.diff = 0
         
-        def dfs(node, max_value, min_value):
+        def dfs(root, mn, mx):
+            if not root: return
             
-            if not node: return
+            self.diff = max(self.diff, abs(mn - root.val), abs(mx - root.val))
             
-            self.output = max(self.output, abs(max_value - node.val), abs(min_value - node.val))
+            mn = min(mn, root.val)
+            mx = max(mx, root.val)
             
-            max_value = max(max_value, node.val)
-            min_value = min(min_value, node.val)
+            dfs(root.left, mn, mx)
+            dfs(root.right, mn, mx)
+            
+        dfs(root, root.val, root.val)
+        return self.diff
+        
+# DFS(2)
+
+# Time: O(N)
+# Space: O(N)
+
+class Solution:
+    def maxAncestorDiff(self, root: Optional[TreeNode]) -> int:
+        
+        self.diff = 0
+        def dfs(root):
+            if not root: return (float("inf"), float("-inf")) # (max, min)
+            if not root.left and not root.right: return (root.val, root.val)
     
-            dfs(node.left, max_value, min_value)
-            dfs(node.right, max_value, min_value)
+            l_min, l_max = dfs(root.left)
+            r_min, r_max = dfs(root.right)
             
+            mn = min(l_min, r_min)
+            mx = max(l_max, r_max)
             
-        dfs(root, root.val,root.val)
+            self.diff = max(self.diff, abs(mn - root.val), abs(mx - root.val))
+            
+            mn = min(mn, root.val)
+            mx = max(mx, root.val)
+            
+            return (mn, mx)
         
-        return self.output
+        dfs(root)
+        return self.diff
