@@ -1,9 +1,10 @@
 # Link: https://leetcode.com/problems/univalued-binary-tree/
+#Q: 965. Univalued Binary Tree
 
-# DFS
+# DFS(1)
 
 # Time: O(N)
-# Space: O(N)
+# Space: O(H)
 
 class Solution:
     def isUnivalTree(self, root: Optional[TreeNode]) -> bool:
@@ -16,3 +17,20 @@ class Solution:
         
         return dfs(root, root.val)
         
+
+# DFS(2)
+
+# Time: O(N)
+# Space: O(H)
+
+class Solution:
+    def isUnivalTree(self, root: Optional[TreeNode]) -> bool:
+        
+        def dfs(root, value):
+            if not root: return True
+            left = dfs(root.left, value)
+            right = dfs(root.right, value)
+            current = root.val == value
+            return current and left and right
+        
+        return dfs(root, root.val)
