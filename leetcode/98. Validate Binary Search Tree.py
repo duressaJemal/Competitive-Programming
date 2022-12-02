@@ -3,29 +3,24 @@
 #Q: 98. Validate Binary Search Tree
 
 # Time: O(N)
-# Space: O(N)
+# Space: O(H)
 
 class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
         
-        output = []
-        
-        def inorder(root):
-            if not root: return
-            inorder(root.left)
-            output.append(root.val)
-            inorder(root.right)
-        
-        inorder(root)
-        i = 1
-        mn = output[0]
-        
-        while i < len(output):
-            if output[i] <= mn:
+    
+        def dfs(root, mn, mx):
+            if not root: return True
+            if root.val <= mn or root.val >= mx: return False
+            left = dfs(root.left, mn, min(mx, root.val))
+            if not left:
                 return False
-            mn = output[i]
-            i += 1
-        return True
+            right = dfs(root.right, max(mn, root.val), mx)
+            
+            return left and right
+        
+        
+        return dfs(root, float("-inf"), float("inf"))
 
 # Time: O(N)
 # Space: O(H)
