@@ -17,7 +17,7 @@ class Solution:
         
         return dfs(root)
         
-# Time: O(N)
+# Time: O(H)
 # Space: O(H)
 
 class Solution:
