@@ -1,4 +1,3 @@
-
 # Link: https://leetcode.com/problems/construct-binary-search-tree-from-preorder-traversal/
 #Q: 1008. Construct Binary Search Tree from Preorder Traversal
 
@@ -26,3 +25,30 @@ class Solution:
         return dfs(float("-inf"), float("inf"))
     
     
+# Time: O(N)
+# Space: O(H)
+
+class Solution:
+    def bstFromPreorder(self, preorder: List[int]) -> Optional[TreeNode]:
+        
+        node = TreeNode(preorder[0])
+        stack = [node]
+        
+        for value in preorder[1:]:
+            
+            if stack[-1].val > value:
+                while stack[-1].val > value:
+                    stack[-1].left = TreeNode(value)
+                    stack.append(stack[-1].left)
+
+            else:
+                while stack and stack[-1].val < value:
+                    prev = stack.pop()
+                
+                prev.right = TreeNode(value)
+                stack.append(prev.right)
+                
+        return node
+        
+        
+        
