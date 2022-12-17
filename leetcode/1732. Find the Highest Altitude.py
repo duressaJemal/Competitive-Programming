@@ -1,10 +1,11 @@
+# Link: https://leetcode.com/problems/find-the-highest-altitude/
+#Q: 1732. Find the Highest Altitude
+
+# Time: O(N)
+# Space: O(1)
+
 class Solution:
     def largestAltitude(self, gain: List[int]) -> int:
-        
-        prefix = [0] * (len(gain) + 1)
-        
-        for i in range(1, len(gain) + 1):
-            prefix[i] = prefix[i - 1] + gain[i - 1]
-
-        return max(prefix)
-        
+        for i in range(1, len(gain)):
+            gain[i] += gain[i - 1]
+        return max(max(gain), 0)
