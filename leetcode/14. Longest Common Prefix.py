@@ -1,17 +1,26 @@
-#link https://leetcode.com/problems/longest-common-prefix/submissions/
+# Link: https://leetcode.com/problems/longest-common-prefix/
+#Q: 14. Longest Common Prefix
+
+# Time: O(N)
+# Space: O(1)
+
 class Solution:
     def longestCommonPrefix(self, strs: List[str]) -> str:
         
-        output = []
+        current = list(strs[0])
         
-        for i in range(len(strs[0])):
-            first = strs[0][i]
+        for i in range(1, len(strs)):
             
-            for j in range(len(strs)):
-
-                if i >= len(strs[j]) or strs[j][i] != first:
-                    return "".join(output)
+            if not strs[i]:
+                current = ""
                 
-            output.append(strs[j][i])
-    
-        return "".join(output)
+            elif current and strs[i]:
+                c_i, s_i = 0, 0
+                
+                while c_i < len(current) and s_i < len(strs[i]) and current[c_i] == strs[i][s_i]:
+                    c_i += 1
+                    s_i += 1
+                
+                current = "" if not c_i else current[:c_i]
+                    
+        return "".join(current)
