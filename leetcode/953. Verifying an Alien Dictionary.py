@@ -15,14 +15,15 @@ class Solution:
             l, r = 0, 0
             len_l, len_r = len(words[i -1]), len(words[i])
             
-            while l < len_l and r < len_r:
-                if position[words[i - 1][l]] > position[words[i][r]]: 
-                    return False
-                if position[words[i - 1][l]] < position[words[i][r]]:
-                    break
+            while l < len_l or r < len_r:
+                
+                if not r < len_r: return False
+                if not l < len_l: break
+                    
+                if position[words[i - 1][l]] > position[words[i][r]]: return False
+                if position[words[i - 1][l]] < position[words[i][r]]: break
+
                 l += 1
                 r += 1
-            
-            if l < len_l and not r < len_r: return False
             
         return True
