@@ -1,7 +1,7 @@
 # Link: https://leetcode.com/problems/largest-perimeter-triangle/
 #Q: 976. Largest Perimeter Triangle
 
-# Time: O(N)
+# Time: O(Nlog(N))
 # Space: O(N) b/c sort() is O(N)
 
 class Solution:
