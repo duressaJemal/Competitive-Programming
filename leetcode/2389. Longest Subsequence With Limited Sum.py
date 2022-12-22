@@ -1,8 +1,8 @@
 # Link: https://leetcode.com/problems/longest-subsequence-with-limited-sum/
 #Q: 2389. Longest Subsequence With Limited Sum
 
-# Time: O(M*N)
-# Space: O(M)
+# Time: (M*N + Nlog(N))
+# Space: O(M + N)
 
 class Solution:
     def answerQueries(self, nums: List[int], queries: List[int]) -> List[int]:
@@ -19,7 +19,7 @@ class Solution:
         return ans
         
     
-# Time: O(M*log(N))
+# Time: O(M*log(N) + Nlog(N))
 # Space: O(M + N)
 
 class Solution:
@@ -45,3 +45,11 @@ class Solution:
             ans[l_q] = r
         
         return ans
+        
+        
+        
+        
+        
+        
+        
+        
