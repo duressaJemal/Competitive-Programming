@@ -1,20 +1,18 @@
+# Link: https://leetcode.com/problems/number-of-good-pairs/
+#Q: 1512. Number of Good Pairs
+
+# Time: O(N)
+# Space: O(1)
+
 class Solution:
     def numIdenticalPairs(self, nums: List[int]) -> int:
-
-        i = 0
-        j = i + 1
-        n = len(nums)
-        counter = 0
         
-        while(i < n):
-            
-            while (j < n):
-                
-                if nums[i] == nums[j]:
-                    counter += 1
-                
-                j += 1
-            
-            i += 1
-            j = i + 1
-        return counter
+        output = 0
+        counter = Counter(nums)
+        for key in counter:
+            n = counter[key]
+            output += ((n * (n - 1)) // 2)
+        
+        return output
+        
+                 
