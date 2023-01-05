@@ -1,15 +1,15 @@
-# Time: O(N)
-# Space: O(N)
+# # Time: O(N)
+# # Space: O(N)
 
-class Solution:
-    def buildArray(self, nums: List[int]) -> List[int]:
+# class Solution:
+#     def buildArray(self, nums: List[int]) -> List[int]:
         
-        n = len(nums)
-        ans = [0] * n
-        for index, value in  enumerate(nums):
-            ans[index] = nums[value]
+#         n = len(nums)
+#         ans = [0] * n
+#         for index, value in  enumerate(nums):
+#             ans[index] = nums[value]
         
-        return ans
+#         return ans
 
 # follow-up (from discuss section)
 
