@@ -1,3 +1,6 @@
+# Time: O(1)
+# Space: O(1)
+
 class Solution:
     def complexNumberMultiply(self, num1: str, num2: str) -> str:
         
