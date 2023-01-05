@@ -11,6 +11,7 @@ class Solution:
         output = [0] * n
         
         for value in nums:
+            
             if value > 0:
                 output[positive_index] = value
                 positive_index += 2 # since we have to alternate the parity
@@ -18,7 +19,6 @@ class Solution:
                 output[negative_index] = value
                 negative_index += 2
             
-        
         return output
             
         
