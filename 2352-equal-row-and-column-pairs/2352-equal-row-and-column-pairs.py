@@ -17,9 +17,6 @@ class Solution:
             
             col_elements[col] = tuple(temporary)
         
-        
-        print(row_elements)
-        print(col_elements)
         equal_pairs = 0
         
         for row in range(row_len):
