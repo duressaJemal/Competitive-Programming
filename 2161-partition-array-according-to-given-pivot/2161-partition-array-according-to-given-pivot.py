@@ -1,3 +1,6 @@
+# Time: O(N)
+# Space: O(N)
+
 class Solution:
     def pivotArray(self, nums: List[int], pivot: int) -> List[int]:
         
