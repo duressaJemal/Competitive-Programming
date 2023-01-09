@@ -30,19 +30,18 @@ class Solution:
         n = len(nums)
         output = [0] * n
         
-        low = 0
-        similar = 0
-        high = 0
+        less_than_pivot_count = 0
+        same_as_pivot_count = 0
         
         for index, value in enumerate(nums):
             if value < pivot:
-                low += 1
+                less_than_pivot_count += 1
             elif value == pivot:
-                similar += 1
+                same_as_pivot_count += 1
         
-        high = low + similar
-        similar = low
         low = 0
+        similar = low + less_than_pivot_count
+        high = similar + same_as_pivot_count
         
         for index, value in enumerate(nums):
             if value < pivot:
