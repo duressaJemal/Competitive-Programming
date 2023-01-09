@@ -1,3 +1,6 @@
+# Time: O(N^2)
+# Space: O(N)
+
 class Solution:
     def minOperations(self, boxes: str) -> List[int]:
         
