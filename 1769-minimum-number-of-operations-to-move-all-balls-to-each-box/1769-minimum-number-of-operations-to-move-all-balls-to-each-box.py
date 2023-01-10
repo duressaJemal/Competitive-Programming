@@ -1,23 +1,3 @@
-# # Time: O(N^2)
-# # Space: O(N)
-
-class Solution:
-    def minOperations(self, boxes: str) -> List[int]:
-        
-        n = len(boxes)
-        output = []
-        
-        for index, value in enumerate(boxes):
-            operations = 0
-            for i in range(n):
-                if boxes[i] == "1":
-                    operations += abs(index - i)
-            
-            output.append(operations)
-        
-        return output
-
-    
 # Time: O(N)
 # Space: O(N)
 
@@ -33,9 +13,14 @@ class Solution:
             prefix[index] = prefix[index - 1]
             if boxes[index] == "1":
                 prefix[index] += index
-                
-        right_count = sum(list(map(int, list(boxes))))
+        
+        # count all the values of "1"
+        right_count = 0
+        for index in range(n):
+            if boxes[index] == "1":
+                right_count += 1
         left_count  = 0
+        
         
         for index in range(n):
             
@@ -54,6 +39,16 @@ class Solution:
         
         return output
             
+
+# Optimized
+
+# Time: O(N)
+# Space: O(1)
+
+# class Solution:
+#     def minOperations(self, boxes: str) -> List[int]:
+
+
             
             
             
