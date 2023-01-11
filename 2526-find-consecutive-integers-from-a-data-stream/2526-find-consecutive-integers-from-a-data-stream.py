@@ -1,35 +1,24 @@
+# Time: O(N)
+# Space: O(1)
+
 class DataStream:
-    
-    """
-    keep track of the last value that is different from value
-    if the current value is different from current value:
-        return False
-    else:
-        check the lenght bn the last wrong value and the current value
-        if it is >= k then return True
-        
-    
-    
-    """
 
     def __init__(self, value: int, k: int):
-        self.stream = []
+        
         self.value = value
         self.k = k
-        self.bad_index = -1
-        self.current_index = -1
+        self.bad_position = -1
+        self.current_position = -1
         
-
     def consec(self, num: int) -> bool:
-        self.stream.append(num)
-        self.current_index += 1
         
+        self.current_position += 1
         if num != self.value:
-            self.bad_index = self.current_index 
+            self.bad_position = self.current_position
             return False
         else:
-            # check the distance between current index and bad_index
-            if self.current_index - self.bad_index >= self.k:
+            # check the distance between current_position and bad_position
+            if self.current_position - self.bad_position >= self.k:
                 return True
             else:
                 return False
