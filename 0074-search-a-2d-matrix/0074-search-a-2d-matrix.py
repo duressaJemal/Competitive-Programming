@@ -1,6 +1,6 @@
 # binary search
 
-# Time: O(log(M*N))
+# Time: O(M*log(N))
 # Space: O(1)
 
 class Solution:
@@ -61,7 +61,7 @@ class Solution:
                     return False
         
         
-                
+
                 
                     
                 
