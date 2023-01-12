@@ -1,3 +1,6 @@
+# Time: O(N), where N = total characters in the given list
+# space: O(26) == O(1)
+
 class Solution:
     def commonChars(self, words: List[str]) -> List[str]:
         
@@ -9,6 +12,7 @@ class Solution:
         ofset = ord("a")
         
         for word in words:
+            
             counter = [0] * 26
             for char in word:
                 asci = ord(char)
