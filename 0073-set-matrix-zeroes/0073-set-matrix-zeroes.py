@@ -1,16 +1,11 @@
+# Time: O(M*N * (M + N))
+# Space: O(1)
+
 class Solution:
     def setZeroes(self, matrix: List[List[int]]) -> None:
         """
         Do not return anything, modify matrix in-place instead.
         """
-        
-        """
-        change the changable characters into temporaray char without changing the zeros
-        
-        then change all the temp characters into zeros 
-        
-        """
-        
         row_len = len(matrix)
         col_len = len(matrix[0])
         
