@@ -1,3 +1,6 @@
+# Time: O(N), where N is total number of elements in the grid
+# Space: O(N)
+
 class Solution:
     def largestLocal(self, grid: List[List[int]]) -> List[List[int]]:
         
