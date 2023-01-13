@@ -1,3 +1,6 @@
+# Time: O(M*N)
+# Space: O(M*N))
+
 class Solution:
     def matrixReshape(self, mat: List[List[int]], r: int, c: int) -> List[List[int]]:
 
@@ -9,6 +12,7 @@ class Solution:
             return mat
         
         new_matrix = [[0] * c for _ in range(r)]
+        
         new_matrix_row = 0
         new_matrix_col = 0
         
