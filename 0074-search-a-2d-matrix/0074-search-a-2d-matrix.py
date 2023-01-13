@@ -1,4 +1,4 @@
-# Follow-up
+# Binary search
 
 # Time: O(log(M*N))
 # Space: O(1)
