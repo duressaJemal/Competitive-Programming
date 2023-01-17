@@ -27,16 +27,14 @@ class Solution:
         
         def search_minimum(start, end):
             
-            minimum_value = heights[start]
-            minimum_index = start
+            minimum = [heights[start], start] # height, index
             
             while start <= end:
-                if heights[start] < minimum_value:
-                    minimum_value = heights[start]
-                    minimum_index = start
+                if heights[start] < minimum[0]:
+                    minimum = [heights[start], start]
                 start += 1
             
-            return minimum_index
+            return minimum[1]
         
         n = len(names)
         curr = n - 1
