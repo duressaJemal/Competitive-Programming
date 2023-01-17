@@ -39,14 +39,16 @@ class Solution:
             return minimum_index
         
         n = len(names)
-        current_index = n - 1
+        curr = n - 1
         
-        while current_index >= 0:
+        while curr >= 0:
             
-            minimum_index = search_minimum(0, current_index)
-            heights[minimum_index], heights[current_index] = heights[current_index], heights[minimum_index]
-            names[minimum_index], names[current_index] = names[current_index], names[minimum_index]
-            current_index -= 1
+            mn = search_minimum(0, curr)
+            
+            heights[mn], heights[curr] = heights[curr], heights[mn]
+            names[mn], names[curr] = names[curr], names[mn]
+            
+            curr -= 1
             
         return names
                 
