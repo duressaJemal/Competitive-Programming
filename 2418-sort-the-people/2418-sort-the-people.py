@@ -71,7 +71,30 @@ class Solution:
         
         return names
                                                                             
-            
+# Counting sort
+
+# Time: O(N)
+# Space: O(M), where M is the largest integer
+
+class Solution:
+    def sortPeople(self, names: List[str], heights: List[int]) -> List[str]:
+      
+        max_value = 10 ** 5
+        counter = [[0, 0]] * (max_value + 1)
+        
+        for index, value in enumerate(heights):
+            counter[value] = [counter[value][0] + 1, index]
+        
+        output = []
+        for index in range(len(counter) - 1, - 1, -1):
+            if counter[index][0]:
+                output.append(names[counter[index][1]])
+        
+        return output
+        
+    
+
+
         
         
         
