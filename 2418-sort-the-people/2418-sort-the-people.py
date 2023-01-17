@@ -1,4 +1,5 @@
-
+# Time: O(N^2)
+# Space: O(1)
 
 class Solution:
     def sortPeople(self, names: List[str], heights: List[int]) -> List[str]:
