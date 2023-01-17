@@ -1,3 +1,6 @@
+# Time: O(M * N)
+# Space: O(1)
+
 class Solution:
     def rotate(self, matrix: List[List[int]]) -> None:
         """
@@ -13,5 +16,6 @@ class Solution:
         
         for i in range(m):
             matrix[i].reverse()
+        
         
         
