@@ -1,3 +1,6 @@
+# Time: O(N*M), where M = length of the largest integer == 7 so O(N)
+# Space: O(N)
+
 class Solution:
     def countDistinctIntegers(self, nums: List[int]) -> int:
         
