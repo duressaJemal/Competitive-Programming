@@ -1,3 +1,6 @@
+# Time: O(Nlog(N))
+# Space: O(N)
+
 class Solution:
     def smallerNumbersThanCurrent(self, nums: List[int]) -> List[int]:
         
