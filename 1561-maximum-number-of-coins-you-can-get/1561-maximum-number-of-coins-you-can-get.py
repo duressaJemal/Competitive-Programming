@@ -1,3 +1,6 @@
+# Time: O(Nlog(N))
+# Space: O(1)
+
 class Solution:
     def maxCoins(self, piles: List[int]) -> int:
         
