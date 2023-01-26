@@ -1,16 +1,9 @@
+# Time: O(sqrt(N))
+# Space: O(1)
+
 class Solution:
     def judgeSquareSum(self, c: int) -> bool:
-        
-        """
-        use two pointer(l, r)
-        l = 0
-        r = sqrt(c)
-        
-        approach: colliding pointers
-        
-        
-        """
-        
+            
         left = 0
         right = ceil(sqrt(c))
         
