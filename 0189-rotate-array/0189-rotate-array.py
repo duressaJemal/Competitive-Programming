@@ -8,21 +8,20 @@ class Solution:
         """
         
         n = len(nums)
+        k = k % n
         
-        for index in range(n):
-            current_index = (index + k) % n
-            prev_value = nums[index]
-            
-            if isinstance(prev_value, tuple):
-                prev_value = prev_value[0]
-            
-            nums[current_index] = (nums[current_index], prev_value)
+        def reverse_list(start, end):
+            while start < end:
+                nums[start], nums[end] = nums[end], nums[start]
+                start += 1
+                end -= 1
         
-        for index, value in enumerate(nums):
-            nums[index] = value[1]
-        
+        nums.reverse()
+        reverse_list(0, k - 1)
+        reverse_list(k, n - 1)
         
         
+
             
         
             
