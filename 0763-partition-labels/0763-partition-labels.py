@@ -1,5 +1,5 @@
 # Time: O(N)
-# Space: O(N)
+# Space: O(1)
 
 class Solution:
     def partitionLabels(self, s: str) -> List[int]:
