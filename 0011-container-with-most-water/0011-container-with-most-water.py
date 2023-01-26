@@ -1,17 +1,8 @@
+# Time: O(N)
+# Space: O(1)
+
 class Solution:
     def maxArea(self, height: List[int]) -> int:
-        
-        """
-        
-        keep two pointers l, r
-        in each step calculate the area
-        after calculating the area increament the pointer with
-        the smallest height value.
-            removing the largest cannot result in better area
-            but removing the smallest may result in better area
-            because we could find some larger height
-            
-        """
         
         n = len(height)
         max_area = 0
