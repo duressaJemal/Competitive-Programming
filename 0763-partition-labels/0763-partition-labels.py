@@ -1,11 +1,9 @@
+# Time: O(N)
+# Space: O(N)
+
 class Solution:
     def partitionLabels(self, s: str) -> List[int]:
         
-        """
-        count total appearance of char
-        for the given value 
-        
-        """
         n = len(s)
         output = []
         
