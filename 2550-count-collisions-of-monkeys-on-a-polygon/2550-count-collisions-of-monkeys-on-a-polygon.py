@@ -20,4 +20,8 @@ class Solution:
         mod = 10 ** 9 + 7  
         return (power(n, 2, mod) - 2) % mod
 
-
+class Solution:
+    def monkeyMove(self, n: int) -> int:
+        
+        mod = 10 ** 9 + 7
+        return (pow(2, n, mod) - 2) % mod
