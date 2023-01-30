@@ -1,3 +1,6 @@
+# Time: O(log(N))
+# Space: O(log(N))
+
 class Solution:
     def monkeyMove(self, n: int) -> int:
         
