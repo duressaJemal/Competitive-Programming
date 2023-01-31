@@ -1,3 +1,6 @@
+# Time: O(Nlog(N))
+# space: O(1)
+
 class Solution:
     def dividePlayers(self, skill: List[int]) -> int:
         
