@@ -1,18 +1,18 @@
 class Solution:
     def plusOne(self, digits: List[int]) -> List[int]:
         
-        string = []
-        for digit in digits:
-            string.append(str(digit))
+        n = len(digits)
         
-        digits = "".join(string)
-        digits = int(digits)
-        digits += 1
+        for index in range(n - 1, -1, -1):
+            if digits[index] < 9:
+                digits[index] += 1
+                return digits
+            else:
+                digits[index] = 0
         
-        digits = str(digits)
+        # happens if all the given digits are bunch of nines
         
-        output = []
-        for digit in digits:
-            output.append(int(digit))
+        output = [0] * (n + 1)
+        output[0] = 1
         
         return output
