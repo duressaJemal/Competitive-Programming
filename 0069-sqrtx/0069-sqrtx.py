@@ -1,9 +1,11 @@
+# Time: O(log(N)) where N = 2 ** 16
+# Space: O(1)
+
 class Solution:
     def mySqrt(self, x: int) -> int:
         
         l = 1 # the min value it could be
         r = 2 ** 16
-        print(r)
              
         while r > l + 1:
             mid = (l + r) // 2
