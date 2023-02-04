@@ -1,3 +1,7 @@
+# Time: O(Nlog(N))
+# Space: O(1)
+
+
 class Solution:
     def numRescueBoats(self, people: List[int], limit: int) -> int:
         
@@ -12,10 +16,7 @@ class Solution:
         while left <= right:
             if people[left] + people[right] <= limit:
                 left += 1
-                right -= 1
-            else:
-                right -= 1
-            
+            right -= 1
             count += 1
         
         return count
