@@ -1,33 +1,29 @@
-# Link: https://codeforces.com/problemset/problem/1689/A
-#Q: Lex String
-
 t = int(input())
-
 for _ in range(t):
-    n, m , k = map(int, input().split())
+    n, m, k = map(int, input().split())
     a = list(input())
     b = list(input())
+
     a.sort()
     b.sort()
-    
-    c = []
+
+    output = []
+    count_a, count_b = 0, 0
 
     i, j = 0, 0
-    A, B = 0, 0
+    while i < n and j < m:
 
-    while i < len(a) and j < len(b):
-
-        if (a[i] < b[j] and A < k) or B >= k:
-            c.append(a[i])
+        if (a[i] <= b[j] and count_a < k) or count_b == k:
+            output.append(a[i])
             i += 1
-            A += 1
-            B = 0
+            count_a += 1
+            count_b = 0
         else:
-            c.append(b[j])
+            output.append(b[j])
             j += 1
-            A = 0
-            B += 1
-    
-    print("".join(c))
+            count_a = 0
+            count_b += 1
         
+    print("".join(output))
+
 

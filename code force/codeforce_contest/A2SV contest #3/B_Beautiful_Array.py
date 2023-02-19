@@ -1,0 +1,28 @@
+n = int(input())
+
+arr = list(map(int, input().split()))
+
+zeros = []
+positive = []
+negative = []
+
+for index, value in enumerate(arr):
+    if value == 0:
+        zeros.append(value)
+    elif value > 0:
+        positive.append(value)
+    else:
+        negative.append(value)
+
+if len(negative) % 2 == 0:
+    zeros.append(negative.pop())
+
+if not len(positive):
+    positive.append(negative.pop())
+    positive.append(negative.pop())
+
+print(len(negative), *negative)
+print(len(positive), *positive)
+print(len(zeros), *zeros)
+
+
