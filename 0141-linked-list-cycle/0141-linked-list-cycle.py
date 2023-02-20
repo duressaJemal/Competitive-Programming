@@ -8,21 +8,24 @@
 # Time: O(N)
 # Space: O(1)
 
-# class Solution:
-#     def hasCycle(self, head: Optional[ListNode]) -> bool:
+class Solution:
+    def hasCycle(self, head: Optional[ListNode]) -> bool:
         
-#         # phase 1
-#         fast = head
-#         slow = head
+        # phase 1
+        fast = head
+        slow = head
         
-#         while fast and fast.next:
-#             fast = fast.next.next
-#             slow = slow.next
+        while fast and fast.next:
+            fast = fast.next.next
+            slow = slow.next
             
-#             if slow == fast:
-#                 return True
+            if slow == fast:
+                return True
         
-#         return False
+        return False
+
+# Time: O(N)
+# Space: O(N)
 
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
