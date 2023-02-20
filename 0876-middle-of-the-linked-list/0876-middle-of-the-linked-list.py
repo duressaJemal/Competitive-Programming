@@ -7,6 +7,25 @@
 class Solution:
     def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
         
+        current = head
+        count = 0
+        
+        while current:
+            count += 1
+            current = current.next
+        
+        count = count // 2
+        
+        while count:
+            head = head.next
+            count -= 1
+        
+        return head
+
+
+class Solution:
+    def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        
         fast = head
         slow = head
         
