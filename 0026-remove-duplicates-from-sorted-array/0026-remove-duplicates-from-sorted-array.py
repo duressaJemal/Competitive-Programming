@@ -1,3 +1,24 @@
+# Time: O(N)
+# Space: O(1)
+
+class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        
+        n = len(nums)
+        
+        left = 0
+        
+        for right in range(n):
+            if nums[right] != nums[left]:
+                left += 1
+                nums[left] = nums[right]
+        
+        return left + 1
+
+
+# Time: O(Nlog(N))
+# Space: O(1)
+
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
         
@@ -12,5 +33,12 @@ class Solution:
         nums.sort()
         return n - count
         
-        
-        
+
+
+            
+            
+            
+            
+            
+            
+            
