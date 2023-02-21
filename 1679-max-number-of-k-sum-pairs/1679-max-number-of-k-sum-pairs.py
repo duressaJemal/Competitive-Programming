@@ -1,4 +1,4 @@
-# Time: O(N)
+# Time: O(Nlog(N))
 # Space: O(1)
 
 class Solution:
