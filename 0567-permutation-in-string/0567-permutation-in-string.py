@@ -1,3 +1,6 @@
+# Time: O(N)
+# Space: O(k) where k = 26, O(1)
+
 class Solution:
     def checkInclusion(self, s1: str, s2: str) -> bool:
         
