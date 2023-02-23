@@ -5,27 +5,40 @@ class NumMatrix:
         row_len = len(matrix)
         col_len = len(matrix[0])
         
-        prefix = [[0 for _ in range(col_len + 1)] for _ in range(row_len + 1)]
+        # row prefix
+        for col in range(1, col_len):
+            matrix[0][col] += matrix[0][col - 1]
+        
+        # col prefix
+        for row in range(1, row_len):
+            matrix[row][0] += matrix[row - 1][0]
+        
         
         # build prefix
-        for row in range(1, row_len + 1):
-            for col in range(1, col_len + 1):
+        for row in range(1, row_len):
+            for col in range(1, col_len):
                 
-                prefix[row][col] = prefix[row - 1][col] + prefix[row][col - 1] + matrix[row - 1][col - 1] - prefix[row - 1][col - 1]
+                up = matrix[row - 1][col]
+                left = matrix[row][col - 1]
+                digonal = matrix[row - 1][col - 1] 
+                current = matrix[row][col]
                 
-        self.matrix = prefix
-        print(self.matrix)
+                matrix[row][col] = up + left + current - digonal 
+    
+        self.matrix = matrix
+
                 
     def sumRegion(self, row1: int, col1: int, row2: int, col2: int) -> int:
+        up_right = self.matrix[row1 - 1][col2] if row1 else 0
+        bottom_left = self.matrix[row2][col1 - 1] if col1 else 0 
+        digonal = self.matrix[row1 - 1][col1 - 1] if (col1 and row1) else 0 
         
-        row1 += 1
-        row2 += 1
-        col1 += 1
-        col2 += 1
+        return self.matrix[row2][col2] - up_right - bottom_left + digonal
+
+
         
-        val = self.matrix[row2][col2] - self.matrix[row1 - 1][col2] - self.matrix[row2][col1 - 1] + self.matrix[row1 - 1][col1 - 1]
         
-        return val
+
 
 
 # Your NumMatrix object will be instantiated and called as such:
