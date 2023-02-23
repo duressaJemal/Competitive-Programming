@@ -24,5 +24,5 @@ class Solution:
             val = (ord(s[index]) - ord("a") + prefix[index]) % 26 
             prefix[index] = chr(ord("a") + val)
         
-        prefix.pop()
+        prefix.pop() # remove the extra char
         return "".join(prefix)
