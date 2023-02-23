@@ -22,10 +22,7 @@ class Solution:
         
         for index in range(n):
             val = (ord(s[index]) - ord("a") + prefix[index]) % 26
-            if val >= 0:
-                prefix[index] = chr(ord("a") + val)
-            else:
-                prefix[index] = chr(ord("z") - val)
+            prefix[index] = chr(ord("a") + val)
             
         
         return "".join(prefix)
