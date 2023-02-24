@@ -1,3 +1,6 @@
+# Time: O(N + M) where N = len(nums1), M = len(nums2)
+# Space: O(N)
+
 class Solution:
     def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
         
