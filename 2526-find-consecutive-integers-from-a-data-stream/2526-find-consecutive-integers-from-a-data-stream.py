@@ -1,3 +1,6 @@
+# Time: O(N)
+# Space: O(K)
+
 class DataStream:
 
     def __init__(self, value: int, k: int):
