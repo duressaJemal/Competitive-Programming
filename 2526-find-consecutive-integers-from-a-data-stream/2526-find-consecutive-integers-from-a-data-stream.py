@@ -1,5 +1,5 @@
 # Time: O(N)
-# Space: O(1)
+# Space: O(K)
 
 class DataStream:
 
@@ -7,22 +7,30 @@ class DataStream:
         
         self.value = value
         self.k = k
-        self.bad_position = -1
-        self.current_position = -1
-        
+        self.queue = deque([])
+        self.dict = defaultdict(int)
+
     def consec(self, num: int) -> bool:
         
-        self.current_position += 1
-        if num != self.value:
-            self.bad_position = self.current_position
-            return False
-        else:
-            # check the distance between current_position and bad_position
-            if self.current_position - self.bad_position >= self.k:
-                return True
-            else:
-                return False
+        # add
+        self.queue.append(num)
+        self.dict[num] += 1
         
+        # remove
+        while len(self.queue) > self.k:
+            self.dict[self.queue[0]] -= 1
+            self.queue.popleft()
+        
+        if len(self.queue) == self.k and (self.value in self.dict) and (self.dict[self.value] == self.k):
+            return True
+        else:
+            return False
+            
+            
+        
+        
+
+
 # Your DataStream object will be instantiated and called as such:
 # obj = DataStream(value, k)
 # param_1 = obj.consec(num)
