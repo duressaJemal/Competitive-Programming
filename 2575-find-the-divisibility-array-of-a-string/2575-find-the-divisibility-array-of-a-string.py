@@ -1,5 +1,5 @@
 # Time: O(N)
-
+# Space: O(1)
 
 class Solution:
     def divisibilityArray(self, word: str, m: int) -> List[int]:
