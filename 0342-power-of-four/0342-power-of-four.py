@@ -1,3 +1,6 @@
+# Time: O(log4(N))
+# Space: O(1)
+
 class Solution:
     def isPowerOfFour(self, n: int) -> bool:
         
