@@ -1,3 +1,6 @@
+# Time: O(N)
+# Space: O(N)
+
 class Solution:
     def nextGreaterElements(self, nums: List[int]) -> List[int]:
         
