@@ -7,26 +7,16 @@ class Solution:
         greater = []
         hash_map = defaultdict(lambda : -1)
         
-        finished = False
         
         for index in range(2 * n):
             
             current_index = index % n
             value = nums[current_index]
             
-            while greater and value >= greater[-1][1]:
-                if value == greater[-1][1] and current_index == greater[-1][0]:
-                    finished = True
-                    break
-                if value > greater[-1][1]:
-                    hash_map[greater.pop()[0]] = value
-                else:
-                    break
+            while greater and value > greater[-1][1]:
+                hash_map[greater.pop()[0]] = value
             
-            if not finished:
-                greater.append((current_index, value))
-            else:
-                break
+            greater.append((current_index, value))
         
         
         for key in hash_map:
