@@ -1,4 +1,4 @@
-# Time: O(log(N)) where N = 2 ** 16
+# Time: O(log(N)) 
 # Space: O(1)
 
 class Solution:
