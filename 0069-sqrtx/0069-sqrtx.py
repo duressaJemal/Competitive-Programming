@@ -4,18 +4,18 @@
 class Solution:
     def mySqrt(self, x: int) -> int:
         
-        l = 1 # the min value it could be
-        r = 2 ** 16
-             
-        while r > l + 1:
-            mid = (l + r) // 2
-            squared = mid * mid
-            
-            if squared < x:
-                l = mid
-            elif squared > x:
-                r = mid
-            else:
-                return mid
+        left = 0
+        right = x + 1
         
-        return l if x else 0
+        while right > left + 1:
+            
+            mid = left + (right - left) // 2
+            
+            res = mid * mid
+            
+            if res <= x:
+                left = mid
+            else:
+                right = mid
+        
+        return left
