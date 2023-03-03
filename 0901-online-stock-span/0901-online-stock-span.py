@@ -7,7 +7,6 @@ class StockSpanner:
         
         self.stock = []
         
-
     def next(self, price: int) -> int:
         
         prev = 0
@@ -26,7 +25,6 @@ class StockSpanner:
         
         return self.stock[-1][1] - prev
 
-    
 # Oficial Solution
 
 # Time: O(1) - Amortized
