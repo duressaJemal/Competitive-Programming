@@ -1,3 +1,6 @@
+# Time: O(N + M) where N = len(prices), M = total calls made
+# Space: O(N)
+
 class StockSpanner:
 
     def __init__(self):
