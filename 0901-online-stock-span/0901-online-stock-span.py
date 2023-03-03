@@ -1,4 +1,4 @@
-# Time: O(N + M) where N = len(prices), M = total calls made
+# Time: O(N)
 # Space: O(N)
 
 class StockSpanner:
@@ -25,7 +25,31 @@ class StockSpanner:
             prev = self.stock[-2][1]
         
         return self.stock[-1][1] - prev
+
+    
+# Oficial Solution
+
+# Time: O(1) - Amortized
+# Space: O(N)
+
+class StockSpanner:
+
+    def __init__(self):
+        self.stack = []
         
+    def next(self, price: int) -> int:
+        
+        ans = 1
+        
+        while self.stack and self.stack[-1][0] <= price:
+            ans += self.stack.pop()[1]
+        
+        self.stack.append((price, ans))
+        
+        return self.stack[-1][1]
+        
+        
+
             
         
 
