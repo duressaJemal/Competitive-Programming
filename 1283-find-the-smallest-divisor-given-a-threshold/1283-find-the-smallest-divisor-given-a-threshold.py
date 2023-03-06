@@ -1,3 +1,6 @@
+# Time: O(Nlog(N))
+# Space: O(1)
+
 class Solution:
     def smallestDivisor(self, nums: List[int], threshold: int) -> int:
         
