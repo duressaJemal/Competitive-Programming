@@ -1,3 +1,6 @@
+# Time: O(log(N))
+# Space: O(1)
+
 class Solution:
     def searchInsert(self, nums: List[int], target: int) -> int:
         
