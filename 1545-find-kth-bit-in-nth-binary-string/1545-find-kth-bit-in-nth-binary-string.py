@@ -1,3 +1,6 @@
+# Time: O(N*2^(N - 1))
+# Space: O(N + (2 ^ N) - 1)
+
 class Solution:
     def findKthBit(self, n: int, k: int) -> str:
         
