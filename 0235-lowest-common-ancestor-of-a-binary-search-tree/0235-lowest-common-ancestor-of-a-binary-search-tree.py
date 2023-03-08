@@ -5,27 +5,27 @@
 #         self.left = None
 #         self.right = None
 
+# Time: O(N)
+# Space: O(N)
+
 class Solution:
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
         
-        ans = [None]
-        
         def dfs(root, p, q):
-            if not root: return 0
             
-            curr = 0
+            # current node is ancestor
             if root.val == p.val or root.val == q.val:
-                curr = 1
+                return root
+            if (p.val > root.val or q.val > root.val) and (p.val < root.val or q.val < root.val):
+                return root
             
-            left = dfs(root.left, p, q)
-            right = dfs(root.right, p, q)
+            # ancestor in the right node
+            if p.val > root.val: 
+                return dfs(root.right, p, q)
+            # ancestor in the left node
+            else:                
+                return dfs(root.left, p, q)
+        
+        return dfs(root, p, q)
             
-            if (curr + left + right) > 1:
-                ans[0] = root
             
-            return curr or left or right
-        
-        dfs(root, p, q)
-        return ans[0]
-        
-        
