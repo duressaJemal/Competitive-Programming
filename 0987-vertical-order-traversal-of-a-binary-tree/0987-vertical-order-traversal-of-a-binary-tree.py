@@ -24,16 +24,14 @@ class Solution:
         
         dfs(root, 0, 0)
         
-        cols = sorted(hash_map.keys())
+        columns = sorted(hash_map.keys())
 
-        for col in cols:
-            curr = hash_map[col]
+        for column in columns:
+            
+            curr = hash_map[column]
             curr.sort()
             
-            temp = []
-            for index, value in curr:
-                temp.append(value)
-            
+            temp = [value for index, value in curr]
             output.append(temp)
         
         return output
