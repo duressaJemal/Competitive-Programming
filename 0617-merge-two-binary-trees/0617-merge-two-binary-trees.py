@@ -5,6 +5,9 @@
 #         self.left = left
 #         self.right = right
 
+# Time: O(N)
+# Space: O(N)
+
 class Solution:
     def mergeTrees(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> Optional[TreeNode]:
         
