@@ -10,10 +10,8 @@ class Solution:
         
         def dfs(root1, root2):
             
-            if not root1 or not root2:
-                if not root1 and not root2:
-                    return None
-                return root1 or root2
+            if not root1: return root2
+            if not root2: return root1
             
             root1.left = dfs(root1.left, root2.left)
             root1.right = dfs(root1.right, root2.right)
