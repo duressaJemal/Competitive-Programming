@@ -5,6 +5,9 @@
 #         self.left = left
 #         self.right = right
 
+# Time: O(N)
+# Space: O(N)
+
 class Solution:
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
         
