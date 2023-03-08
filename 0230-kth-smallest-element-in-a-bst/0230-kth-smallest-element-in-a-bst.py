@@ -5,6 +5,9 @@
 #         self.left = left
 #         self.right = right
 
+# Time: O(N*2^N)
+# Space: O(N)
+
 class Solution:
     def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
         
