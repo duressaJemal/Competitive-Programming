@@ -21,11 +21,9 @@ class Solution:
         start = binary_search(target)
         end = binary_search(target + 1)
 
-        if start >= len(nums):
+        if start >= len(nums) or nums[start] != target:
             return [-1, - 1]
-        else:
-            if nums[start] == target:
-                return [start, end - 1]
-            else:
-                return [-1, - 1]
+        
+        return [start, end - 1]
+            
             
