@@ -12,53 +12,57 @@ class Solution:
     def findMode(self, root: Optional[TreeNode]) -> List[int]:
         
         
-        def dfs(root, prev, count, max_count, output):
+        def dfs(root, prev, count, max_count, duplicate, output, append):
             
             if not root:
                 return (prev, count)
             
-            prev, count = dfs(root.left, prev, count, max_count, output)
+            prev, count = dfs(root.left, prev, count, max_count, duplicate, output, append)
             if prev == root.val:
                 count += 1
             else:
                 count = 1
                 prev = root.val
             
-            if count == max_count:
-                output.append(root.val)
+            if append:
+                if count == max_count:
+                    output.append(root.val)
+            else:
+                duplicate[0] = max(duplicate[0], count)
+                
             
-            prev, count = dfs(root.right, prev, count, max_count, output)
-            
+            prev, count = dfs(root.right, prev, count, max_count, duplicate, output, append)
             return (prev, count)
 
             
             
         
-        def find_count(root, prev, count, duplicate):
-            """
-            finds the count of most occuring node value
+#         def find_count(root, prev, count, duplicate):
+#             """
+#             finds the count of most occuring node value
             
-            """ 
-            if not root:
-                return (prev, count)
+#             """ 
+#             if not root:
+#                 return (prev, count)
             
-            prev, count = find_count(root.left, prev, count, duplicate)
+#             prev, count = find_count(root.left, prev, count, duplicate)
             
-            if prev == root.val:
-                count += 1
-            else:
-                count = 1
-                prev = root.val
+#             if prev == root.val:
+#                 count += 1
+#             else:
+#                 count = 1
+#                 prev = root.val
             
-            duplicate[0] = max(duplicate[0], count)
+#             duplicate[0] = max(duplicate[0], count)
             
-            prev, count = find_count(root.right, prev, count, duplicate)
-            return prev, count
+#             prev, count = find_count(root.right, prev, count, duplicate)
+#             return prev, count
         
+        # root, prev, count, max_count, duplicate, output, append
         duplicate = [0]
         output = []
-        find_count(root, None, 0, duplicate)
-        dfs(root, None, 0 , duplicate[0], output)
+        dfs(root, None, 0, 0, duplicate, output, append = False)
+        dfs(root, None, 0, duplicate[0], duplicate, output, append = True)
         return output
         
         
