@@ -5,6 +5,9 @@
 #         self.left = left
 #         self.right = right
 
+# Time: O(Nlog(N))
+# Space: O(N)
+
 class Solution:
     def verticalTraversal(self, root: Optional[TreeNode]) -> List[List[int]]:
         
