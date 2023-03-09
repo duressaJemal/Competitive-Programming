@@ -33,30 +33,6 @@ class Solution:
             
             prev, count = dfs(root.right, prev, count, max_count, duplicate, output, append)
             return (prev, count)
-
-            
-            
-        
-#         def find_count(root, prev, count, duplicate):
-#             """
-#             finds the count of most occuring node value
-            
-#             """ 
-#             if not root:
-#                 return (prev, count)
-            
-#             prev, count = find_count(root.left, prev, count, duplicate)
-            
-#             if prev == root.val:
-#                 count += 1
-#             else:
-#                 count = 1
-#                 prev = root.val
-            
-#             duplicate[0] = max(duplicate[0], count)
-            
-#             prev, count = find_count(root.right, prev, count, duplicate)
-#             return prev, count
         
         # root, prev, count, max_count, duplicate, output, append
         duplicate = [0]
