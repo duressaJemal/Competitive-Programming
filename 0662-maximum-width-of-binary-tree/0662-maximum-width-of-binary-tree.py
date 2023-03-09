@@ -4,6 +4,10 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+
+# Time: O(N)
+# Space: O(N)
+
 class Solution:
     def widthOfBinaryTree(self, root: Optional[TreeNode]) -> int:
         
