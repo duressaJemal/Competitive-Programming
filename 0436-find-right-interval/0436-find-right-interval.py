@@ -1,10 +1,6 @@
 class Solution:
     def findRightInterval(self, intervals: List[List[int]]) -> List[int]:
-        
-        # arr2 = [3, 4, 5]
-        # arr = [1, 3, 4]
-        # print(bisect_right(arr2, 6))
-        # print(bisect_left(arr2, 6))
+
         n = len(intervals)
         
         # build hash_map
