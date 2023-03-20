@@ -1,3 +1,6 @@
+# Time: O(Nlog(N) + Mlog(M))
+# Space: O(1)
+
 class Solution:
     def matchPlayersAndTrainers(self, players: List[int], trainers: List[int]) -> int:
         
