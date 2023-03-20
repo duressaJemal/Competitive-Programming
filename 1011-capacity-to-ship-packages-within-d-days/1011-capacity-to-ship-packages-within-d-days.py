@@ -1,3 +1,6 @@
+# Time: O(Mlog(N)) where M = len(weights), N = len(days)
+# Space: O(1)
+
 class Solution:
     def shipWithinDays(self, weights: List[int], days: int) -> int:
         
