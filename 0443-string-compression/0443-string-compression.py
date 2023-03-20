@@ -1,3 +1,6 @@
+# Time: O(N^2)
+# Space: O(1)
+
 class Solution:
     def compress(self, chars: List[str]) -> int:
         
