@@ -2,18 +2,21 @@ class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
         
         output = []
-        subset = []
         
-        def helper(i):
+        def helper(arr, i):
+            
             if i == len(nums):
-                output.append(deepcopy(subset))
+                output.append(arr.copy())
+                return
+            
             else:
-                subset.append(nums[i])
-                helper(i + 1)
-                subset.pop()
-                helper(i + 1)
-                
+                arr.append(nums[i]) # include
+                helper(arr, i + 1)
+                arr.pop() # exclude
+                helper(arr, i + 1)
+            
+            return
 
-        helper(0)
+        helper([], 0)
         return output
                     
