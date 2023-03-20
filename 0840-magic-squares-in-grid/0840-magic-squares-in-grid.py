@@ -1,3 +1,6 @@
+# Time: O(1)
+# Space: O(1)
+
 class Solution:
     def numMagicSquaresInside(self, grid: List[List[int]]) -> int:
         
