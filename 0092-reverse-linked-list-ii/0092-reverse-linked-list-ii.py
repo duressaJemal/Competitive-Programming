@@ -4,6 +4,9 @@
 #         self.val = val
 #         self.next = next
 
+# Time: O(N)
+# Space: O(1)
+
 class Solution:
     def reverseBetween(self, head: Optional[ListNode], left: int, right: int) -> Optional[ListNode]:
         
@@ -29,9 +32,9 @@ class Solution:
                     cur = temp
                     count += 1
                 
+                # adjust
                 current.next = prev
                 rev_tail.next = cur
-                
                 break
                 
             else:
