@@ -4,6 +4,9 @@
 #         self.val = val
 #         self.next = next
 
+# Time: O(N)
+# Space: O(N)
+
 class Solution:
     def nextLargerNodes(self, head: Optional[ListNode]) -> List[int]:
         
