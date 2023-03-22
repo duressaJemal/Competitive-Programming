@@ -7,29 +7,18 @@
 class Solution:
     def insertionSortList(self, head: Optional[ListNode]) -> Optional[ListNode]:
         
-        
-        order = []
-        cur = head
-        
-        while cur:
-            order.append(cur)
-            cur = cur.next
-        
-        for index in range(len(order) - 1, -1, -1):
+        current = head
+        while current:
             
-            value = order[index]
-            
-            while value and value.next:
-                if value.val >= value.next.val:
-                    value.val, value.next.val = value.next.val, value.val
-                    # adjust
-                    value = value.next
-                else:
-                    break
+            t_head = head
+
+            while t_head != current:
+                if t_head.val > current.val:
+                    t_head.val, current.val = current.val, t_head.val
+                t_head = t_head.next
+            current = current.next
+        
         return head
-    
-    
-    
     
     
     
