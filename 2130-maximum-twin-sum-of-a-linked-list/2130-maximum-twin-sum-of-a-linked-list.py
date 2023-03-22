@@ -20,17 +20,16 @@ class Solution:
         # adjust
         current = slow
         
+        # reverse
         prev = None
         while current:
-            
             temp = current.next
             current.next = prev
             prev = current
             current = temp
         
-        mx = 0
         # compare
-
+        mx = 0
         while prev:
             mx = max(mx, head.val + prev.val)
             head = head.next
