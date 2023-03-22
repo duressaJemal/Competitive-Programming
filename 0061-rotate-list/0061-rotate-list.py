@@ -1,8 +1,4 @@
-# Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, val=0, next=None):
-#         self.val = val
-#         self.next = next
+# Time: O()
 
 class Solution:
     def rotateRight(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
@@ -13,6 +9,8 @@ class Solution:
         # count total number on nodes
         count = 0
         current = head
+        tail = head
+        
         while current:
             count += 1
             current = current.next
