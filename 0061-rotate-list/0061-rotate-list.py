@@ -1,4 +1,5 @@
-# Time: O()
+# Time: O(N)
+# Space: O(1)
 
 class Solution:
     def rotateRight(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
