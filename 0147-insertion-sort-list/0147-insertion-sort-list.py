@@ -4,6 +4,9 @@
 #         self.val = val
 #         self.next = next
 
+# Time: O(N^2)
+# Space: O(1)
+
 class Solution:
     def insertionSortList(self, head: Optional[ListNode]) -> Optional[ListNode]:
         
