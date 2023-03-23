@@ -1,3 +1,7 @@
+# Time: O(2^N)
+# Space: O(N)
+
+
 class Solution:
     def findSubsequences(self, nums: List[int]) -> List[List[int]]:
         
