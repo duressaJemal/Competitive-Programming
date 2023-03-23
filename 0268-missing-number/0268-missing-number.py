@@ -1,6 +1,3 @@
-# Link: https://leetcode.com/problems/missing-number/
-#Q: 268. Missing Number
-
 # Time: O(N)
 # Space: O(1)
 
