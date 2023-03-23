@@ -1,13 +1,14 @@
 class Solution:
     def findSubsequences(self, nums: List[int]) -> List[List[int]]:
         
-        output = set()
+        output = []
         
         def backtrack(arr, indx):
             
+            # base case
             if indx == len(nums):
-                if len(arr) >= 2:
-                    output.add(tuple(arr))
+                if len(arr) >= 2 and arr not in output:
+                    output.append(arr.copy())
                 return
             
             value = nums[indx]
@@ -21,12 +22,7 @@ class Solution:
             return
         
         backtrack([], 0)
-        res = []
-        
-        for val in output:
-            res.append(list(val))
-        
-        return res
+        return output
         
         
         
