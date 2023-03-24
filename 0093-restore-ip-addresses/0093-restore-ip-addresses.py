@@ -1,18 +1,6 @@
 class Solution:
     def restoreIpAddresses(self, s: str) -> List[str]:
         
-        """
-        
-        # base case
-        if count == 4 and we used all the nums
-        
-        
-        - we need counting
-        - we need the know if it is invalid
-        
-        
-        """
-        
         count = [0]
         output = []
         
@@ -31,7 +19,6 @@ class Solution:
                 if int(cur) > 255 or (cur[0] == "0" and len(cur) > 1):
                     return
     
-                    
                 # add
                 arr.append(cur)
                 backtrack(arr, index + step + 1)
