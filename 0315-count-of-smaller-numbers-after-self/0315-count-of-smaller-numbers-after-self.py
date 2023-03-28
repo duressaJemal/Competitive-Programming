@@ -5,6 +5,11 @@ class Solution:
     def countSmaller(self, nums: List[int]) -> List[int]:
         
         def merge(left, right):
+            """
+            merge two sorted arrays of index
+            sorted by the value of would fetch not directly
+            
+            """
             
             i = 0
             j = 0
@@ -16,9 +21,6 @@ class Solution:
                 
                 # value at left is less than or equal to value at right
                 if j >= len(right) or (i < len(left) and nums[left[i]] <= nums[right[j]]):
-                    
-#                     index = left[i][1]
-#                     count[index] += (array_size - i)
                     count[left[i]] += right_count
                     c[i + j] = left[i]
                     i += 1
