@@ -1,6 +1,8 @@
+# Time: O(Nlog(N))
+# Space: O(N)
+
 class Solution:
     def countSmaller(self, nums: List[int]) -> List[int]:
-        
         
         def merge(left, right):
             
@@ -8,7 +10,7 @@ class Solution:
             j = 0
             
             c = [0] * (len(right) + len(left))
-            total = 0
+            array_size = 0
             
             while i < len(left) or j < len(right):
                 
@@ -16,8 +18,7 @@ class Solution:
                 if j >= len(right) or (i < len(left) and left[i] <= right[j]):
                     
                     index = left[i][1]
-                    cur = total - i
-                    count[index] += cur
+                    count[index] += (array_size - i)
                     c[i + j] = left[i]
                     i += 1
                 else:
@@ -25,7 +26,7 @@ class Solution:
                     c[i + j] = right[j]
                     j += 1
                 
-                total += 1
+                array_size += 1
                      
             return c
         
