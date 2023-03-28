@@ -1,3 +1,6 @@
+# Time: O(N)
+# Space: O(1)
+
 class Solution:
     def findDuplicate(self, nums: List[int]) -> int:
         
