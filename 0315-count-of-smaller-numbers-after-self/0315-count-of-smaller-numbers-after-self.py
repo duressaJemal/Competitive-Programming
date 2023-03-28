@@ -10,23 +10,25 @@ class Solution:
             j = 0
             
             c = [0] * (len(right) + len(left))
-            array_size = 0
+            right_count = 0
             
             while i < len(left) or j < len(right):
                 
                 # value at left is less than or equal to value at right
-                if j >= len(right) or (i < len(left) and left[i] <= right[j]):
+                if j >= len(right) or (i < len(left) and nums[left[i]] <= nums[right[j]]):
                     
-                    index = left[i][1]
-                    count[index] += (array_size - i)
+#                     index = left[i][1]
+#                     count[index] += (array_size - i)
+                    count[left[i]] += right_count
                     c[i + j] = left[i]
                     i += 1
+            
                 else:
+                    
                     # value at right less than value at left
                     c[i + j] = right[j]
+                    right_count += 1
                     j += 1
-                
-                array_size += 1
                      
             return c
         
@@ -34,7 +36,7 @@ class Solution:
             
             # base case
             if l == r:
-                return [nums[l]]
+                return [nums_index[l]]
             
             mid = l + (r - l) // 2
             
@@ -46,9 +48,8 @@ class Solution:
             return combined
         
         n = len(nums)
+        nums_index = [ x for x in range(n)]
         
-        for index, value in enumerate(nums):
-            nums[index] = (value, index)
         count = [0] * n
         merge_sort(0, n - 1)
         return count
