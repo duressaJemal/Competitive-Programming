@@ -1,6 +1,8 @@
+# Time: O(N)
+# Space: O(1)
+
 class Solution:
     def firstMissingPositive(self, nums: List[int]) -> int:
-        
         
         nums.append(0)
         n = len(nums)
