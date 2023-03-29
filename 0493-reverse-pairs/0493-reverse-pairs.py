@@ -1,3 +1,6 @@
+# Time: O(Nlog(N))
+# Space: O(N)
+
 class Solution:
     def reversePairs(self, nums: List[int]) -> int:
         
@@ -10,7 +13,7 @@ class Solution:
             """
             
             
-            # count all valid pairs
+            # count all valid pairs using binary search
             count = 0
             for val in left:
                 count += bisect_left(right, ceil(val / 2))
@@ -30,11 +33,6 @@ class Solution:
 
                 # condition to choose the left value
                 if right_index >= len(right) or (left_index < len(left) and left[left_index] <= right[right_index]):
-                    # record valid pairs and adjust previous count
-#                     res[0] += (prev + count)
-#                     # print(prev, count, left[left_index])
-#                     prev = count
-#                     count = 0
                     
                     # merge
                     combined[left_index + right_index] = left[left_index]
@@ -44,12 +42,6 @@ class Solution:
                     # right value is less than the left value
                     if left_index < len(left) and left[left_index] > right[right_index] * 2:
                         count += 1
-#                         print(left[left_index], "left")
-#                         print(right[right_index], "right")
-
-#                         print("yaaa")
-                    
-                    # merge
                     combined[left_index + right_index] = right[right_index]
                     right_index += 1
                     
