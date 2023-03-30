@@ -4,28 +4,32 @@ class Solution:
         n = len(nums)
         res = []
         
-        def backtrack(arr, visited):
+        def backtrack(arr, bit, count):
             
-            if len(arr) == n:
+            if count == n:
                 res.append(arr.copy())
                 return
-            
-            for value in nums:
-                if value not in visited:
+                
+            for index in range(n):
+                
+                if bit & (1 << index) == 0:
                     
-                    # add
-                    arr.append(value)
-                    visited.add(value)
+                    # set the index's bit to 1
+                    bit |= (1 << index)
+                    arr.append(nums[index])
+                    backtrack(arr, bit, count + 1)
                     
-                    backtrack(arr, visited)
-                    
-                    # remove
+                    # set the index's bit to 0
+                    bit ^= (1 << index)
                     arr.pop()
-                    visited.remove(value)
-                    
-        backtrack([], set())
+                
+            return
+        
+        backtrack([], 0, 0)
         return res
             
+
+
             
                     
                     
