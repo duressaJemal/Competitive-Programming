@@ -1,6 +1,8 @@
+# Time: O(N^2)
+# Space: O(N)
+
 class Solution:
     def maxProduct(self, words: List[str]) -> int:
-        
         
         bits = []
         ofset = ord("a")
