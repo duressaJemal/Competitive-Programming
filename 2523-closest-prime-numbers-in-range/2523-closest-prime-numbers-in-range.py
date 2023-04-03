@@ -1,3 +1,6 @@
+# Time: O(N*(log(N)) ^ 2)
+# Space: O(N ^ 0.5)
+
 class Solution:
     def closestPrimes(self, left: int, right: int) -> List[int]:
         
