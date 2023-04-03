@@ -24,7 +24,7 @@ class Solution:
             if is_prime[val]:
                 res.append(val)
 
-        # record the min prime gaps and primes
+        # record prime pairs and thier gaps
         distance = [float("inf"), [0, 0]]
         if len(res) > 1:
             for index in range(1, len(res)):
