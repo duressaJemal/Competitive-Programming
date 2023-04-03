@@ -1,3 +1,6 @@
+# Time: O(2^N)
+# Space: O(N^2)
+
 class Solution:
     def countMaxOrSubsets(self, nums: List[int]) -> int:
         
