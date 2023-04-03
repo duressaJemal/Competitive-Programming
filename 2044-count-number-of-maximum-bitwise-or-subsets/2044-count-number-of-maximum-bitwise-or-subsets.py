@@ -7,48 +7,37 @@ class Solution:
         n = len(nums)
         count = 0
         
-        def backtrack(index, arr):
+        def backtrack(index, cur):
             """
             Generate all subsets
             """
             if index == n:
-                if arr:
-                    subsets.append(arr.copy())
+                subsets.append(cur)
                 return
             
             # include
-            arr.append(nums[index])
-            backtrack(index + 1, arr)
+            include = cur | nums[index]
+            backtrack(index + 1, include)
             
             # exclude
-            arr.pop()
-            backtrack(index + 1, arr)
+            backtrack(index + 1, cur)
             
             return
-        
-        # find OR
-        def find_or(arr):
-            """
-            find Bitwise OR of array
-            """
-            cur = 0
-            for val in arr:
-                cur |= val
-            
-            return cur
         
         
         # generate all subsets
         subsets = []
-        backtrack(0, [])
+        backtrack(0, 0)
         
-        # find max OR
-        mx = find_or(nums)
+        subsets.sort(reverse = True)
+        mx = subsets[0]
         
-        for arr in subsets:
-            if find_or(arr) == mx:
+        for val in subsets:
+            if val == mx:
                 count += 1
-        
+            else:
+                break
+
         return count
         
         
