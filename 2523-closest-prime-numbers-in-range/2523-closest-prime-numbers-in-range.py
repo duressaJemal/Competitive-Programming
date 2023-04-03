@@ -19,7 +19,7 @@ class Solution:
         is_prime[0] = False
         is_prime[1] = False
         
-        end = ceil(sqrt(mx)) # optimized seive
+        end = ceil(sqrt(mx)) # optimized sieve
         find_all_primes(end)
         
         res = []
