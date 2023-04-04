@@ -1,3 +1,6 @@
+# Time: O(N^2*log(K))
+# Space: O(1)
+
 class Solution:
     def subarrayGCD(self, nums: List[int], k: int) -> int:
         
