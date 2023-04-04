@@ -5,38 +5,32 @@
 #         self.left = left
 #         self.right = right
 
+# Time: O(N)
+# Space: O(N)
+
 class Solution:
     def pathSum(self, root: Optional[TreeNode], targetSum: int) -> int:
         
-        def dfs(root, prev):
-            
+        def dfs(root, total):
             if not root:
                 return
             
-            cur = prev + root.val
-            if cur == targetSum:
-                count[0] += 1
-                
-            # includ
-            dfs(root.left, cur)
-            dfs(root.right, cur)
+            current_sum = total + root.val
+            count[0] += hash_map[current_sum - targetSum]
             
-            # exclude
-            if root not in visited:
-                if root.val == targetSum:
-                    count[0] += 1
-                dfs(root.left, root.val)
-                dfs(root.right, root.val)
-                
-                visited.add(root)
-
+            # add
+            hash_map[current_sum] += 1
+            
+            dfs(root.left, current_sum)
+            dfs(root.right, current_sum)
+            
+            # remove
+            hash_map[current_sum] -= 1
+            
+        
         count = [0]
-        if not root:
-            return 0
+        hash_map = defaultdict(int)
+        hash_map[0] = 1
         
-        visited = {root}
         dfs(root, 0)
-        
         return count[0]
-            
-            
