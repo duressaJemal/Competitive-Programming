@@ -31,14 +31,11 @@ class Solution:
                 visited.add(root)
 
         count = [0]
-        visited = set()
+        if not root:
+            return 0
         
-        if root:
-            if root.val == targetSum:
-                count[0] += 1
-
-            dfs(root.left, root.val)
-            dfs(root.right, root.val)
+        visited = {root}
+        dfs(root, 0)
         
         return count[0]
             
