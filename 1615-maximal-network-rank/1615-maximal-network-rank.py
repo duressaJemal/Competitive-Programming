@@ -1,3 +1,6 @@
+# Time: O(N*2)
+# Space: O(N)
+
 class Solution:
     def maximalNetworkRank(self, n: int, roads: List[List[int]]) -> int:
 
