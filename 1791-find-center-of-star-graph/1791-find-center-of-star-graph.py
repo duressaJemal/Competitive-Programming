@@ -1,3 +1,6 @@
+# Time: O(N)
+# Space: O(N)
+
 class Solution:
     def findCenter(self, edges: List[List[int]]) -> int:
         
