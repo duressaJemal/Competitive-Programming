@@ -11,9 +11,6 @@ class Solution:
         
         def dfs(root):
             
-            if not root:
-                return None
-            
             cur_node = Node(root.val, [])
             visited[root] = cur_node
             
@@ -21,8 +18,7 @@ class Solution:
             for neigh in root.neighbors:
                 if neigh not in visited:
                     cur  = dfs(neigh)
-                    if cur:
-                        temp.append(cur)
+                    temp.append(cur)
                 else:
                     temp.append(visited[neigh])
                 
@@ -30,6 +26,10 @@ class Solution:
             return cur_node
             
         visited = {}
+        
+        if not node:
+            return None
+        
         return dfs(node)
 
             
