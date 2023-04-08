@@ -1,3 +1,6 @@
+# Time: O(M*N)
+# Space: O(N)
+
 class Solution:
     def findCircleNum(self, isConnected: List[List[int]]) -> int:
         
