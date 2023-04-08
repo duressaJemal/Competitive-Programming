@@ -1,4 +1,4 @@
-# Time: O(M*N)
+# Time: O(N^2)
 # Space: O(N)
 
 class Solution:
