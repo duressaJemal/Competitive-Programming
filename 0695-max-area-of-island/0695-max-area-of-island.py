@@ -12,10 +12,10 @@ class Solution:
             
         def dfs(row, col):
             # base case
-            if not is_valid(row, col) or (row, col) in visited:
+            if not is_valid(row, col):
                 return 0
             
-            visited.add((row, col))
+            grid[row][col] = 0
             count = 1
             
             dirc = [(1, 0), (0, 1), (-1, 0), (0, -1)]
@@ -27,7 +27,6 @@ class Solution:
             
             return count
         
-        visited = set()
         res = 0
         for row in range(row_len):
             for col in range(col_len):
