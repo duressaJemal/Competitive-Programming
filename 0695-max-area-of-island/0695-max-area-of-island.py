@@ -1,3 +1,6 @@
+# Time: O(N * M)
+# Space: O(N * M)
+
 class Solution:
     def maxAreaOfIsland(self, grid: List[List[int]]) -> int:
         
