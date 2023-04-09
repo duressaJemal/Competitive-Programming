@@ -30,7 +30,8 @@ class Solution:
         res = 0
         for row in range(row_len):
             for col in range(col_len):
-                res = max(res, dfs(row, col))
+                if grid[row][col]:
+                    res = max(res, dfs(row, col))
         return res
                     
         
