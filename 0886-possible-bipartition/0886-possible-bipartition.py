@@ -14,13 +14,15 @@ class Solution:
             
             visited[node] = color
             cur = True
+            
             for child in graph[node]:
                 if child in visited:
                     if visited[child] == color: return False
                 else:
                     cur = cur and bipartite(child, 1 - color)
+                    # early exit
                     if not cur:
-                        return False
+                        return cur
             return cur
         
         visited = {}
@@ -28,6 +30,9 @@ class Solution:
         for node in graph:
             if node not in visited:
                 res = res and bipartite(node, 1)
+                # early exit
+                if not res:
+                    return res
         return res
         
                     
