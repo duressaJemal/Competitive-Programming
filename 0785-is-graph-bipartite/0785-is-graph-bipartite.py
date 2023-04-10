@@ -1,3 +1,6 @@
+# Time: O(V + E)
+# Space: O(V + E)
+
 class Solution:
     def isBipartite(self, graph: List[List[int]]) -> bool:
         
