@@ -1,6 +1,10 @@
+# Time: O(N)
+# Space: O(N)
+
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
         
+        # build graph
         graph = defaultdict(list)
         for end, start in prerequisites:
             graph[start].append(end)
@@ -18,11 +22,7 @@ class Solution:
             color[node] = -1 # make it black
             return True
          
-        
         color = [0] * numCourses
-#         visited = set()
-#         traversed = set()
-
         for node in range(numCourses):
             if not color[node]:
                 if not cycle_detection(node):
