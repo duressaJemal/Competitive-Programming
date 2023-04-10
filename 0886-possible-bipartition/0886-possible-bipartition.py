@@ -1,3 +1,6 @@
+# Time: O(V + E) where V = vertex and E = edge
+# Space: O(V + E)
+
 class Solution:
     def possibleBipartition(self, n: int, dislikes: List[List[int]]) -> bool:
         
@@ -6,8 +9,7 @@ class Solution:
         for u, v in dislikes:
             graph[u].append(v)
             graph[v].append(u)
-        
-        
+          
         def bipartite(node, color):
             
             visited[node] = color
