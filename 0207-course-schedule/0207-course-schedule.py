@@ -6,26 +6,25 @@ class Solution:
             graph[start].append(end)
                 
         def cycle_detection(node):
-            visited.add(node)
-            traversed.add(node)
-            
+            color[node] = 1 # make it gray
             for child in graph[node]:
-       
-                if child in visited:
+                if color[child] == 1:
                     return False
-                
-                if child in traversed:
+                if color[child] == -1: # if traversed before
                     continue
                 else:
                     if not cycle_detection(child):
                         return False         
-            visited.remove(node)
+            color[node] = -1 # make it black
             return True
          
-        visited = set()
-        traversed = set()
-        for node in range(numCourses -1, 0, -1):
-            if node not in traversed:
+        
+        color = [0] * numCourses
+#         visited = set()
+#         traversed = set()
+
+        for node in range(numCourses):
+            if not color[node]:
                 if not cycle_detection(node):
                     return False
         return True
