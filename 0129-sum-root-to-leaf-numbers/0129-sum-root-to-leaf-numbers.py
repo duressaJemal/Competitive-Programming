@@ -5,22 +5,22 @@ class Solution:
     def sumNumbers(self, root: Optional[TreeNode]) -> int:
         
         def dfs(root, total):
-            
+            # base case
             if not root:
                 return
-            
+            # if leaf node
+            total = total * 10 + root.val
             if not root.left and not root.right:
-                total += str(root.val)
-                result[0] += int(total)
+                result[0] += total
                 return
-            
-            dfs(root.left, total + str(root.val))
-            dfs(root.right, total + str(root.val))
+            # recurence relation
+            dfs(root.left, total)
+            dfs(root.right, total)
             
             return
         
         result = [0]
-        dfs(root, "")
+        dfs(root, 0)
         return result[0]
         
         
