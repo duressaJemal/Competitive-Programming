@@ -1,3 +1,6 @@
+# Time: O(N^2)
+# Space: O(N^2)
+
 class Solution:
     def maximumDetonation(self, bombs: List[List[int]]) -> int:
         
