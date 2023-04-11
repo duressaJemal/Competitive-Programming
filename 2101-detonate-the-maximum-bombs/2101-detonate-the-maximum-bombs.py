@@ -24,7 +24,9 @@ class Solution:
             return count
         
         res = 1
-        for node in list(graph.keys()):
+        for index in range(n):
+            cur = bombs[index]
+            node = (cur[0], cur[1], index)
             visited = set()
             res = max(res, dfs(node))
         
