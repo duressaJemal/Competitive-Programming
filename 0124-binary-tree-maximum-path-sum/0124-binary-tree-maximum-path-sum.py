@@ -1,3 +1,6 @@
+# Time: O(N)
+# Space: O(H)
+
 class Solution:
     def maxPathSum(self, root: Optional[TreeNode]) -> int:
         
