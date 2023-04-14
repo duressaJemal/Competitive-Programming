@@ -1,10 +1,5 @@
-"""
-# Definition for a Node.
-class Node:
-    def __init__(self, val=None, children=None):
-        self.val = val
-        self.children = children
-"""
+# Time: O(N)
+# Space: O(H)
 
 class Solution:
     def maxDepth(self, root: 'Node') -> int:
