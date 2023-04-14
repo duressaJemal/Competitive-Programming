@@ -10,11 +10,13 @@ def inpst():
     return list(s[:len(s)])
 def inpnums():return map(int, stdin.readline().strip().split())
 def main():
-    ...
-    
 
-t = inpnum()
-while t:
-    main()
-    t -= 1
+    n = inpnums()
+    arr = inpli()
 
+    for i in range(n):
+        for j in range(n):
+            ...
+            
+
+main()
