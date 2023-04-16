@@ -1,3 +1,5 @@
+# Time: O(log(N))
+
 class Solution:
     def hasAlternatingBits(self, n: int) -> bool:
         
