@@ -1,20 +1,11 @@
 class Solution:
     def updateBoard(self, board: List[List[str]], click: List[int]) -> List[List[str]]:
         
-        def count_adjecent(row, col):
-            
-            count = 0
-            direction = [(1, 0), (0, 1), (-1, 0), (0, -1), (1, 1), (-1, -1), (1, -1), (-1, 1)]
-
-            for x, y in direction:
-                nr = x + row
-                nc = y + col
-                
-                if not (nr < 0 or nr >= row_len or nc < 0 or nc >= col_len): # if valid cell
-                    if board[nr][nc] == "M":
-                        count += 1
-                        
-            return count
+        def is_valid(row, col):
+            if row < 0 or row >= row_len or col < 0 or col >= col_len:
+                return False
+            else:
+                return True
             
         def dfs(row, col):
             
@@ -25,9 +16,18 @@ class Solution:
             
             visited.add((row, col))
             
+            direction = [(1, 0), (0, 1), (-1, 0), (0, -1), (1, 1), (-1, -1), (1, -1), (-1, 1)]
+            
             if board[row][col] == "E":
                 # find all adjecent mines
-                count = count_adjecent(row, col)
+                count = 0
+                for x, y in direction:
+                    
+                    nr = x + row
+                    nc = y + col
+                    
+                    if is_valid(nr, nc) and board[nr][nc] == "M":
+                        count += 1
                 
                 if count:
                     board[row][col] = str(count)
@@ -35,12 +35,12 @@ class Solution:
                     board[row][col] = "B"
             
             if board[row][col] == "B":
-                direction = [(1, 0), (0, 1), (-1, 0), (0, -1), (1, 1), (-1, -1), (1, -1), (-1, 1)]
+
                 for x, y in direction:
                     nr = x + row
                     nc = y + col
                     
-                    if not (nr < 0 or nr >= row_len or nc < 0 or nc >= col_len) and (nr, nc) not in visited: 
+                    if is_valid(nr, nc) and (nr, nc) not in visited: 
                         if not dfs(nr, nc):
                             return False
             
