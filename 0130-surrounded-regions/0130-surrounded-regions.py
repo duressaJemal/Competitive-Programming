@@ -41,11 +41,6 @@ class Solution:
             for col in range(col_len):
                 if board[row][col] == "O":
                     board[row][col] = "X"
-        
-        for row in range(row_len):
-            for col in range(col_len):
-                if board[row][col] == "#":
+                elif board[row][col] == "#":
                     board[row][col] = "O"
-                    
         
-                    
