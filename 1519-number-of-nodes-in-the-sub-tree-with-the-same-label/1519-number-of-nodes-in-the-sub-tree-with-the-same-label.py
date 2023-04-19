@@ -1,9 +1,9 @@
+# Time: O(N)
+# Space: O(H)
+
 class Solution:
     def countSubTrees(self, n: int, edges: List[List[int]], labels: str) -> List[int]:
-        
-        """
-        Count all labels till this node using postorder traversal
-        """
+
         def postorder(node):
             visited.add(node)
             counter = [0] * 26
