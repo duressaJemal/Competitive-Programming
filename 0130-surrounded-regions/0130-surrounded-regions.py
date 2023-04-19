@@ -1,3 +1,6 @@
+# Time: O(M*N)
+# Space: O(M*N)
+
 class Solution:
     def solve(self, board: List[List[str]]) -> None:
         """
