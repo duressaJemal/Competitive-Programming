@@ -1,3 +1,6 @@
+# Time: O(NlogN)
+# Space: O(N)
+
 class Solution:
     def hasGroupsSizeX(self, deck: List[int]) -> bool:
         
