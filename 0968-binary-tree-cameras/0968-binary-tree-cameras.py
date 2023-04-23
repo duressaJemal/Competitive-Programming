@@ -5,6 +5,9 @@
 #         self.left = left
 #         self.right = right
 
+# Time: O(N)
+# Space: O(H)
+
 class Solution:
     def minCameraCover(self, root: Optional[TreeNode]) -> int:
         self.answer = 0
