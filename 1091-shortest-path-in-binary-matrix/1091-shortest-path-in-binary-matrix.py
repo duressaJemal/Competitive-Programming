@@ -1,3 +1,6 @@
+# Time: O(V + E)
+# Space: O(V)
+
 class Solution:
     def shortestPathBinaryMatrix(self, grid: List[List[int]]) -> int:
         
