@@ -22,13 +22,10 @@ class Solution:
             
             n = len(queue)
             for _ in range(n):
-                
                 index = queue.popleft()
-                
                 for station in routes[index]:
                     if station == target:
                         return level
-                    
                     for bus_location in rout_map[station]:
                         if bus_location not in visited:
                             queue.append(bus_location)
@@ -36,5 +33,3 @@ class Solution:
             level += 1
         
         return -1
-                        
-                
