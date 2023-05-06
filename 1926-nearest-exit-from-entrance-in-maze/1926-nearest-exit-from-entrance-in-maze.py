@@ -1,3 +1,6 @@
+# Time: O(V + E)
+# Space: O(V)
+
 class Solution:
     def nearestExit(self, maze: List[List[str]], entrance: List[int]) -> int:
                 
