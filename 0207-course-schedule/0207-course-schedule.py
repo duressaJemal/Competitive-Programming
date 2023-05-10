@@ -1,3 +1,6 @@
+# Time: O(N)
+# Space: O(N)
+
 class Solution:
     def canFinish(self, numCourses: int, pre: List[List[int]]) -> bool:
         
