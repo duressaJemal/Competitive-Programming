@@ -1,3 +1,7 @@
+# Time: O(N)
+# Space: O(N)
+
+
 class Solution:
     def eventualSafeNodes(self, graph: List[List[int]]) -> List[int]:
         
@@ -17,7 +21,6 @@ class Solution:
                     
                 if not dfs(child):
                     cycle = True # cycle exists
-            
             
             
             if cycle:
