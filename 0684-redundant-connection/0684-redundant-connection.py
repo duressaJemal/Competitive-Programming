@@ -1,3 +1,6 @@
+# Time: O(V + E)
+# Space: O(V)
+
 class Solution:
     def findRedundantConnection(self, edges: List[List[int]]) -> List[int]:
         
