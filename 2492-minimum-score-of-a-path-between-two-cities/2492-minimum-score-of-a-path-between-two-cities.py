@@ -11,8 +11,9 @@ class Solution:
             while node != parent[node]:
                 node = parent[node]
             while p != node:
+                cur_parent = parent[p]
                 parent[p] = node
-                p = parent[p]
+                p = cur_parent
             return node
             
             
