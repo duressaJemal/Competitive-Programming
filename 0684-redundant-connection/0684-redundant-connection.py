@@ -1,4 +1,4 @@
-# Time: O(V + E)
+# Time: O(V)
 # Space: O(V)
 
 class Solution:
