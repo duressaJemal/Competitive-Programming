@@ -13,9 +13,7 @@ class Solution:
                     dp[row][col] = 1
                     continue
                 
-                left = dp[row][col - 1] if col >= 0 else 0
-                top = dp[row - 1][col] if row >= 0 else 0
-                dp[row][col] = left + top
+                dp[row][col] = dp[row][col - 1] + dp[row - 1][col]
             
          
         print(dp)
