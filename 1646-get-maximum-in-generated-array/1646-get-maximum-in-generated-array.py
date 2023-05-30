@@ -12,11 +12,11 @@ class Solution:
         dp[1] = 1
         
         for i in range(2, n + 1):
-            if i % 2 == 0:
-                dp[i] = dp[i // 2]
-            else:
-                dp[i] = dp[i// 2] + dp[i // 2 + 1]
-            
+            index = i // 2
+            dp[i] = dp[index]
+            if i % 2:
+                dp[i] += dp[index + 1]
+        
             mx = max(mx, dp[i])
         
         return mx
