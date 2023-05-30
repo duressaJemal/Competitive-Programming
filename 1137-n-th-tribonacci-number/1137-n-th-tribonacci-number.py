@@ -1,3 +1,6 @@
+# Time: O(N)
+# Space: O(1)
+
 class Solution:
     def tribonacci(self, n: int) -> int:
         
