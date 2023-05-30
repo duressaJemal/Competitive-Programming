@@ -1,3 +1,6 @@
+# Time: O(N)
+# Space: O(N)
+
 class Solution:
     def rob(self, nums: List[int]) -> int:
         
