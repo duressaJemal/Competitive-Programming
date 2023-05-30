@@ -1,3 +1,6 @@
+# Time: O(N * M) N = coin size, M = amount
+# Space: O(M) 
+
 class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
         
@@ -13,3 +16,4 @@ class Solution:
                     dp[money] = min(dp[money], dp[money - coin] + 1)
         
         return dp[amount] if dp[amount] != float("inf") else -1
+    
