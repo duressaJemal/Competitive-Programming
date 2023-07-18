@@ -30,8 +30,6 @@ class Solution:
         if max_idx_ma < idx:
             med = self.get_median(a[ai+1:], b, idx - (len(a)//2+1))
         else:
-            # max_idx_ma < min_idx_mb (because they are different numbers) 
-            # => idx <= max_idx_ma <  min_idx_mb => idx < min_idx_mb
             med = self.get_median(a, b[:bi], idx)
 
         return med
