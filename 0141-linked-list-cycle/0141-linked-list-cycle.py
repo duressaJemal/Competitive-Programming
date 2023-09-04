@@ -4,40 +4,22 @@
 #         self.val = x
 #         self.next = None
 
-
-# Time: O(N)
-# Space: O(1)
-
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
         
-        # phase 1
-        fast = head
+        if not head:
+            return False
+        
         slow = head
+        fast = head.next
         
         while fast and fast.next:
-            fast = fast.next.next
+            if fast == slow:
+                return True
+            
             slow = slow.next
-            
-            if slow == fast:
-                return True
+            fast = fast.next.next
         
         return False
-
-# Time: O(N)
-# Space: O(N)
-
-class Solution:
-    def hasCycle(self, head: Optional[ListNode]) -> bool:
-        
-        visited = set()
-        
-        while head:
-            if head in visited:
-                return True
             
-            visited.add(head)
-            head = head.next
-        
-        return False
         
