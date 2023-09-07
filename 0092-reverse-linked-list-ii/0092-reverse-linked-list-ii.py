@@ -4,42 +4,41 @@
 #         self.val = val
 #         self.next = next
 
-# Time: O(N)
-# Space: O(1)
-
 class Solution:
     def reverseBetween(self, head: Optional[ListNode], left: int, right: int) -> Optional[ListNode]:
+        
+        def reverse(node, count):
+            
+            prev = None
+            while count <= right:
+                temp = node.next
+                node.next = prev
+                prev = node
+                node = temp
+                count += 1
+            
+            return prev, node
+            
+            
         
         dummy = ListNode()
         dummy.next = head
         
         count = 1
-        current = dummy
+        cur = dummy
         
-        while current:
-            
-            if count == left:
-                
-                # reverse
-                prev = None
-                cur = current.next
-                rev_tail = cur
-                
-                while count != right + 1:
-                    temp = cur.next
-                    cur.next = prev
-                    prev = cur
-                    cur = temp
-                    count += 1
-                
-                # adjust
-                current.next = prev
-                rev_tail.next = cur
-                break
-                
-            else:
-                count += 1
-                current = current.next
-            
-            
+        # find the starting node
+        while count < left:
+            cur = cur.next
+            count += 1
+        
+        start, end = reverse(cur.next, count)
+        
+        cur.next.next = end 
+        cur.next = start
+        
         return dummy.next
+        
+        
+        
+        
