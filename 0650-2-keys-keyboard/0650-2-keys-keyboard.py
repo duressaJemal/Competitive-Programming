@@ -1,21 +1,25 @@
-# class Solution:
-#     def minSteps(self, n: int) -> int:
+# Time: O(N^2)
+
+class Solution:
+    def minSteps(self, n: int) -> int:
         
-#         @cache
-#         def dp(num):
-#             if num == 1:
-#                 return 0
+        @cache
+        def dp(num):
+            if num == 1:
+                return 0
             
-#             mn = float("inf")
+            mn = float("inf")
             
-#             for i in range(1, num):
-#                 if num % i == 0:
-#                     mn = min(mn, dp(i) + (num // i))
+            for i in range(1, num):
+                if num % i == 0:
+                    mn = min(mn, dp(i) + (num // i))
             
-#             return mn
+            return mn
         
-#         return dp(n)
+        return dp(n)
     
+
+# Time: O(N)
 
 class Solution:
     def minSteps(self, n: int) -> int:
