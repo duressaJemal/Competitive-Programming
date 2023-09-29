@@ -1,6 +1,7 @@
 class Solution:
     def minSteps(self, n: int) -> int:
         
+        @cache
         def dp(num):
             if num == 1:
                 return 0
