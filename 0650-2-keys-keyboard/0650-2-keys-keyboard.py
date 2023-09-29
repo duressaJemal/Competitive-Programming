@@ -20,6 +20,7 @@
 class Solution:
     def minSteps(self, n: int) -> int:
         
+        @cache
         def dp(word_length, print_size):
             
             if word_length == n:
