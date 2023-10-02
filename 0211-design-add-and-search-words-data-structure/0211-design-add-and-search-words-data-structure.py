@@ -30,13 +30,12 @@ class WordDictionary:
         for i in range(n):
             s = word[i]
             if s == ".":
-                output = False
-                
+
                 # iterate over all possible
                 for key in cur.children:
-                    output = output or self.search(word[i + 1:], cur.children[key])
-                    if output:
+                    if self.search(word[i + 1:], cur.children[key]):
                         return True
+                    
                 return False
                     
             if s not in cur.children:
@@ -44,7 +43,6 @@ class WordDictionary:
             cur = cur.children[s]
         
         return cur.is_end
-
 
 
 
