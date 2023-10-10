@@ -4,13 +4,8 @@
 class Solution:
     def minOperations(self, nums: List[int]) -> int:
         
-        nums.sort()
-        n_nums = [nums[0]]
+        n_nums = sorted(set(nums))
         
-        for index in range(1, len(nums)):
-            if nums[index] != nums[index - 1]:
-                n_nums.append(nums[index])
-            
         length_needed = len(nums)
         output = float("inf")
         
