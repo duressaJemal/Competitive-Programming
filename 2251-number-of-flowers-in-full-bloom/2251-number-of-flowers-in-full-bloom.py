@@ -1,3 +1,6 @@
+# Time: O(Nlog(N))
+# Space: O(N)
+
 class Solution:
     def fullBloomFlowers(self, flowers: List[List[int]], people: List[int]) -> List[int]:
         
