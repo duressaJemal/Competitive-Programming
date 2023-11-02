@@ -5,44 +5,38 @@
 #         self.left = left
 #         self.right = right
 
-# Time: O(N)
-# Space: O(N)
-
 class Solution:
     def findMode(self, root: Optional[TreeNode]) -> List[int]:
         
+        arr = []
+        output = []
         
-        def dfs(root, prev, count, max_count, duplicate, output, append):
+        def help(root):
             
             if not root:
-                return (prev, count)
+                return 
+
+            arr.append(root.val)
+            help(root.left)
+            help(root.right)
             
-            prev, count = dfs(root.left, prev, count, max_count, duplicate, output, append)
-            if prev == root.val:
-                count += 1
-            else:
-                count = 1
-                prev = root.val
-            
-            if append:
-                if count == max_count:
-                    output.append(root.val)
-            else:
-                duplicate[0] = max(duplicate[0], count)
-                
-            
-            prev, count = dfs(root.right, prev, count, max_count, duplicate, output, append)
-            return (prev, count)
+            return 
         
-        # root, prev, count, max_count, duplicate, output, append
-        duplicate = [0]
-        output = []
-        dfs(root, None, 0, 0, duplicate, output, append = False)
-        dfs(root, None, 0, duplicate[0], duplicate, output, append = True)
+        help(root)
+        counter = Counter(arr)
+        mx = 0
+        
+        for val in counter.values():
+            mx = max(mx, val)
+        
+        for key in counter:
+            if counter[key] == mx:
+                output.append(key)
+        
         return output
-        
-        
+            
+
             
             
-            
+                
             
