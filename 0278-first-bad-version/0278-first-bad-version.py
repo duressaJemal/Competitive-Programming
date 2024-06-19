@@ -1,11 +1,11 @@
-# Time: O(log(N))
-# Space: O(1)
+# The isBadVersion API is already defined for you.
+# def isBadVersion(version: int) -> bool:
 
 class Solution:
     def firstBadVersion(self, n: int) -> int:
         
-        left = 0
-        right = n
+        left = 0 # impossible
+        right = n # possible
         
         while right > left + 1:
             
@@ -17,3 +17,4 @@ class Solution:
                 left = mid
         
         return right
+        
